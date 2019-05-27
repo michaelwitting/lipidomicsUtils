@@ -1,0 +1,10 @@
+Package: lipidomicsUtils
+Title: Utility functions for lipidomics
+Version: 0.1
+Authors@R: person("Michael", "Witting",email = "michael.witting@helmholtz-muenchen.de",
+                  role = c("aut", "cre"))
+Description: This package supplies different utility functions for people working in lipidomics, e.g. parsing of lipid shorthand notations.
+Depends: R (>= 3.1.0)
+License: GPL-3
+LazyData: true
+RoxygenNote: 6.1.1
