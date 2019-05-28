@@ -1,0 +1,30 @@
+---
+title: "lipid-parsing"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{lipid-parsing}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Basic lipid parsing
+
+Lipids are made of defined building blocks. This building blocks are represented in shorthand notations.
+These shorthands notations can be parsed to get the individual build blocks
+
+```{r setup}
+library(lipidomicsUtils)
+
+lipid <- "PC(16:0/18:1(9Z)"
+
+get_lipid_category(lipid)
+get_lipid_class(lipid)
+get_lipid_subclass(lipid)
+```
