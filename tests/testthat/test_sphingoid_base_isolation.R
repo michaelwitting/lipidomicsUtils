@@ -1,7 +1,7 @@
 library(lipidomicsUtils)
 context("Test sphingoid base parser")
 
-## tests for correct fatty acyls -----------------------------------------------
+## tests for correct sphingoid bases -------------------------------------------
 test_that("correct sphingoid base is isolated", {
 
   # sphingolipids

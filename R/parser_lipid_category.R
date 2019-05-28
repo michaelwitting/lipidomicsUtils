@@ -1,3 +1,6 @@
+#' @title Lipid category (according to LIPIDMAPS)
+#'
+#' @export
 get_lipid_category <- function(lipid) {
   
   lipid_class <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*")
@@ -25,6 +28,9 @@ get_lipid_category <- function(lipid) {
   return(lipid_category)
 }
 
+#' @title Lipid class (according to LIPIDMAPS)
+#'
+#' @export
 get_lipid_class <- function(lipid) {
   
   lipid_class <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*")
@@ -33,6 +39,9 @@ get_lipid_class <- function(lipid) {
   
 }
 
+#' @title Lipid subclass (according to LIPIDMAPS)
+#'
+#' @export
 get_lipid_subclass <- function(lipid) {
   
   lipid_class <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*(\\((O|P))*")
