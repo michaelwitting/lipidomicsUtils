@@ -1,10 +1,17 @@
-#' @title Get all fatty acyls
+#' @title Get all fatty acyls, alkyls and alkenyls
+#' 
+#' This functions isolates all fatty acyls, alkyls and alkenyls from a given lipid shorthand notation and returns them as vector. upported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2)
+#' 
+#' @param lipid Shorthand notation of a acyl (as string), e.g. "PC(18:0/20:4(7E,9E,11Z,14Z)(5OH[S],6OH[R])"
+#' @example 
+#' isolate_fatty_acyls("PC(18:0/20:4(7E,9E,11Z,14Z)(5OH[S],6OH[R])")
 #'
 #' @export
 isolate_fatty_acyls <- function(lipid) {
   
   # get all possible building blocks
-  fatty_acyls <- stringr::str_extract_all(lipid, "(m|d|t|O-|P-)*\\d+:\\d+(\\((\\d*(E|Z|Me|OH),*)*\\))*")[[1]]
+  #fatty_acyls <- stringr::str_extract_all(lipid, "(m|d|t|O-|P-)*\\d+:\\d+(\\((\\d*(E|Z|Me|OH|OOH|O|NH2),*)*\\))*")[[1]]
+  fatty_acyls <- stringr::str_extract_all(lipid, "(m|d|t|O-|P-)*\\d+:\\d+(\\((\\d*(E|Z|Me|OH|OOH|O|NH2)(\\[(S|R)\\])*,*)*\\))*")[[1]]
   
   # remove sphingoid bases
   filter <- stringr::str_detect(fatty_acyls, "(m|d|t)", negate = TRUE)
@@ -14,32 +21,3 @@ isolate_fatty_acyls <- function(lipid) {
   
 }
 
-#' @title Get number of carbons
-#'
-#' @export
-get_carbon_number <- function(fatty_acyl) {
-  
-  base_fatty_acyl <- stringr::str_extract(fatty_acyl, "\\d+:\\d+")[[1]][1]
-  methyl_branches <- stringr::str_count(fatty_acyl, "Me")
-  
-  carbon_number <-
-    as.numeric(stringr::str_split(base_fatty_acyl, ":")[[1]][1]) +
-    methyl_branches
-  
-  return(carbon_number)
-  
-}
-
-#' @title Get number of double bond
-#'
-#' @export
-get_bond_number <- function(fatty_acyl) {
-  
-  base_fatty_acyl <- stringr::str_extract(fatty_acyl, "\\d+:\\d+")[[1]][1]
-  
-  bond_number <-
-    as.numeric(stringr::str_split(base_fatty_acyl, ":")[[1]][2])
-  
-  return(bond_number)
-  
-}
