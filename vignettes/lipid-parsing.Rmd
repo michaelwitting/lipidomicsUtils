@@ -20,10 +20,38 @@ Lipids are made of defined building blocks. This building blocks are represented
 These shorthands notations can be parsed to get the individual build blocks
 
 ```{r setup}
+# loading required libraries
 library(lipidomicsUtils)
+```
 
+
+```{r categories}
+# example lipid PC(16:0/18:1(9Z)), LMGP01010005
 lipid <- "PC(16:0/18:1(9Z)"
 
+# get different lipid categories
+get_lipid_category(lipid)
+get_lipid_class(lipid)
+get_lipid_subclass(lipid)
+```
+
+
+```{r categories2}
+# example lipid PC(O-18:0/18:1(9Z)), LMGP01020202
+lipid <- "PC(O-18:0/18:1(9Z)"
+
+# get different lipid categories
+get_lipid_category(lipid)
+get_lipid_class(lipid)
+get_lipid_subclass(lipid)
+```
+
+
+```{r categories3}
+# example lipid Cer(d18:1/18:1(9Z)), LMSP02010003
+lipid <- "Cer(d18:1/18:1(9Z))"
+
+# get different lipid categories
 get_lipid_category(lipid)
 get_lipid_class(lipid)
 get_lipid_subclass(lipid)
