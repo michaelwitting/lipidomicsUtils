@@ -2,10 +2,17 @@
 % Please edit documentation in R/Parser_fatty_acyl.R
 \name{isolate_fatty_acyls}
 \alias{isolate_fatty_acyls}
-\title{Get all fatty acyls}
+\title{Get all fatty acyls, alkyls and alkenyls
+
+This functions isolates all fatty acyls, alkyls and alkenyls from a given lipid shorthand notation and returns them as vector. upported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2)}
 \usage{
 isolate_fatty_acyls(lipid)
 }
+\arguments{
+\item{lipid}{Shorthand notation of a acyl (as string), e.g. "PC(18:0/20:4(7E,9E,11Z,14Z)(5OH[S],6OH[R])"}
+}
 \description{
-Get all fatty acyls
+Get all fatty acyls, alkyls and alkenyls
+
+This functions isolates all fatty acyls, alkyls and alkenyls from a given lipid shorthand notation and returns them as vector. upported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2)
 }
