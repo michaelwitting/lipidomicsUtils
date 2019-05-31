@@ -16,6 +16,9 @@ test_that("correct fatty acyls are isolated", {
   expect_equal(isolate_fatty_acyls("PC(P-16:0/18:1(9Z))"), c("P-16:0", "18:1(9Z)"))
   expect_equal(isolate_fatty_acyls("PC(P-16:0/16:0(15Me))"), c("P-16:0", "16:0(15Me)"))
   
+  # oxidized lipid
+  expect_equal(isolate_fatty_acyls("PC(18:0/20:4(7E,9E,11Z,14Z)(5OH[S],6OH[R])"), c("18:0", "20:4(7E,9E,11Z,14Z)(5OH[S],6OH[R])"))
+  
   # sphingolipids
   expect_equal(isolate_fatty_acyls("Cer(d18:1/20:0)"), c("20:0"))
   expect_equal(isolate_fatty_acyls("Cer(d18:1/20:0(2OH))"), c("20:0(2OH)"))
