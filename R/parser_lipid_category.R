@@ -28,16 +28,12 @@ get_lipid_category <- function(lipid) {
     stop("Unknown lipid")
     
   }
-  
-  
-  
-  
 }
 
 #' @title Lipid class (according to LIPIDMAPS)
 #'
 #' @export
-get_lipid_mainclass <- function(lipid, lmid = FALSE) {
+get_lipid_mainclass <- function(lipid) {
   
   lipid_main_class <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*")
   
@@ -48,45 +44,11 @@ get_lipid_mainclass <- function(lipid, lmid = FALSE) {
 #' @title Lipid subclass (according to LIPIDMAPS)
 #'
 #' @export
-get_lipid_subclass <- function(lipid, lmid = FALSE) {
+get_lipid_subclass <- function(lipid) {
   
-  lipid_class <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*(\\((O|P))*")
-  lipid_class <- stringr::str_replace(lipid_class, "\\(", "-")
+  lipid_subclass <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*(\\((O|P))*")
+  lipid_subclass <- stringr::str_replace(lipid_subclass, "\\(", "-")
   
-  # return abbrevation or LMID
-  if(lmid) {
-    
-    # get list with LMIDs
-    lmid_list <- .get_lmid_list()
-    
-  } else {
-    
-    return(lipid_class)
-    
-  }
-  
-  return(lipid_class)
-  
-}
-
-
-#'
-#'
-#' @export
-.get_lmid_list <- function() {
-  
-  lmid_list <- list(
-    "MG" = "GL0101",
-    "MG-O" = "GL0102",
-    "MG-P" = "GL0103",
-    "DG" = "GL0201",
-    "DG-O" = "",
-    "DG-P" = "",
-    "DG-O-O" = "",
-    "DG-P-P" = "",
-    "DG-O-P" = "",
-    "DG-P-O" = "",
-    "TG" = "GL0301"
-  )
+  return(lipid_subclass)
   
 }
