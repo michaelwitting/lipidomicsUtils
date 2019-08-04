@@ -47,10 +47,10 @@ test_that("Category parser, PCs", {
 })
 
 test_that("Class parser, PCs", {
-  expect_equal(get_lipid_class("PC(16:0/16:0)"), "PC")
-  expect_equal(get_lipid_class("PC(16:0/16:1(9Z))"), "PC")
-  expect_equal(get_lipid_class("PC(P-16:0/16:0)"), "PC")
-  expect_equal(get_lipid_class("PC(O-16:0/16:0)"), "PC")
+  expect_equal(get_lipid_mainclass("PC(16:0/16:0)"), "PC")
+  expect_equal(get_lipid_mainclass("PC(16:0/16:1(9Z))"), "PC")
+  expect_equal(get_lipid_mainclass("PC(P-16:0/16:0)"), "PC")
+  expect_equal(get_lipid_mainclass("PC(O-16:0/16:0)"), "PC")
 })
 
 test_that("Subclass parser, PCs", {
@@ -69,10 +69,10 @@ test_that("Category parser, PEs", {
 })
 
 test_that("Class parser, PEs", {
-  expect_equal(get_lipid_class("PE(16:0/16:0)"), "PE")
-  expect_equal(get_lipid_class("PE(16:0/16:1(9Z))"), "PE")
-  expect_equal(get_lipid_class("PE(P-16:0/16:0)"), "PE")
-  expect_equal(get_lipid_class("PE(O-16:0/16:0)"), "PE")
+  expect_equal(get_lipid_mainclass("PE(16:0/16:0)"), "PE")
+  expect_equal(get_lipid_mainclass("PE(16:0/16:1(9Z))"), "PE")
+  expect_equal(get_lipid_mainclass("PE(P-16:0/16:0)"), "PE")
+  expect_equal(get_lipid_mainclass("PE(O-16:0/16:0)"), "PE")
 })
 
 test_that("Subclass parser, PEs", {
@@ -91,10 +91,10 @@ test_that("Category parser, PSs", {
 })
 
 test_that("Class parser, PSs", {
-  expect_equal(get_lipid_class("PS(16:0/16:0)"), "PS")
-  expect_equal(get_lipid_class("PS(16:0/16:1(9Z))"), "PS")
-  expect_equal(get_lipid_class("PS(P-16:0/16:0)"), "PS")
-  expect_equal(get_lipid_class("PS(O-16:0/16:0)"), "PS")
+  expect_equal(get_lipid_mainclass("PS(16:0/16:0)"), "PS")
+  expect_equal(get_lipid_mainclass("PS(16:0/16:1(9Z))"), "PS")
+  expect_equal(get_lipid_mainclass("PS(P-16:0/16:0)"), "PS")
+  expect_equal(get_lipid_mainclass("PS(O-16:0/16:0)"), "PS")
 })
 
 test_that("Subclass parser, PSs", {
@@ -113,10 +113,10 @@ test_that("Category parser, CDP-DGs", {
 })
 
 test_that("Class parser, CDP-DGs", {
-  expect_equal(get_lipid_class("CDP-DG(16:0/16:0)"), "CDP-DG")
-  expect_equal(get_lipid_class("CDP-DG(16:0/16:1(9Z))"), "CDP-DG")
-  expect_equal(get_lipid_class("CDP-DG(P-16:0/16:0)"), "CDP-DG")
-  expect_equal(get_lipid_class("CDP-DG(O-16:0/16:0)"), "CDP-DG")
+  expect_equal(get_lipid_mainclass("CDP-DG(16:0/16:0)"), "CDP-DG")
+  expect_equal(get_lipid_mainclass("CDP-DG(16:0/16:1(9Z))"), "CDP-DG")
+  expect_equal(get_lipid_mainclass("CDP-DG(P-16:0/16:0)"), "CDP-DG")
+  expect_equal(get_lipid_mainclass("CDP-DG(O-16:0/16:0)"), "CDP-DG")
 })
 
 test_that("Subclass parser, CDP-DGs", {
@@ -134,9 +134,9 @@ test_that("Category parser, MGs", {
 })
 
 test_that("Class parser, MGs", {
-  expect_equal(get_lipid_class("MG(16:0/0:0/0:0)"), "MG")
-  expect_equal(get_lipid_class("MG(P-16:0/0:0/0:0)"), "MG")
-  expect_equal(get_lipid_class("MG(O-16:0/0:0/0:0)"), "MG")
+  expect_equal(get_lipid_mainclass("MG(16:0/0:0/0:0)"), "MG")
+  expect_equal(get_lipid_mainclass("MG(P-16:0/0:0/0:0)"), "MG")
+  expect_equal(get_lipid_mainclass("MG(O-16:0/0:0/0:0)"), "MG")
 })
 
 test_that("Subclass parser, MGs", {
@@ -153,9 +153,9 @@ test_that("Category parser, DGs", {
 })
 
 test_that("Class parser, DGs", {
-  expect_equal(get_lipid_class("DG(16:0/16:0/0:0)"), "DG")
-  expect_equal(get_lipid_class("DG(P-16:0/16:0/0:0)"), "DG")
-  expect_equal(get_lipid_class("DG(O-16:0/16:0/0:0)"), "DG")
+  expect_equal(get_lipid_mainclass("DG(16:0/16:0/0:0)"), "DG")
+  expect_equal(get_lipid_mainclass("DG(P-16:0/16:0/0:0)"), "DG")
+  expect_equal(get_lipid_mainclass("DG(O-16:0/16:0/0:0)"), "DG")
 })
 
 test_that("Subclass parser, DGs", {
@@ -172,10 +172,10 @@ test_that("Category parser, TGs", {
 })
 
 test_that("Class parser, TGs", {
-  expect_equal(get_lipid_class("TG(16:0/16:0/16:0)"), "TG")
-  expect_equal(get_lipid_class("TG(16:0/16:0/16:0)"), "TG")
-  expect_equal(get_lipid_class("TG(P-16:0/16:0/16:0)"), "TG")
-  expect_equal(get_lipid_class("TG(O-16:0/16:0/16:0)"), "TG")
+  expect_equal(get_lipid_mainclass("TG(16:0/16:0/16:0)"), "TG")
+  expect_equal(get_lipid_mainclass("TG(16:0/16:0/16:0)"), "TG")
+  expect_equal(get_lipid_mainclass("TG(P-16:0/16:0/16:0)"), "TG")
+  expect_equal(get_lipid_mainclass("TG(O-16:0/16:0/16:0)"), "TG")
 })
 
 test_that("Subclass parser, TGs", {
@@ -191,7 +191,7 @@ test_that("Category parser, Cers", {
 })
 
 test_that("Class parser, Cers", {
-  expect_equal(get_lipid_class("Cer(d18:1/20:0"), "Cer")
+  expect_equal(get_lipid_mainclass("Cer(d18:1/20:0"), "Cer")
 })
 
 test_that("Subclass parser, Cers", {
@@ -204,7 +204,7 @@ test_that("Category parser, Hex2Cers", {
 })
 
 test_that("Class parser, Hex2Cers", {
-  expect_equal(get_lipid_class("Hex2Cer(d18:1/20:0"), "Hex2Cer")
+  expect_equal(get_lipid_mainclass("Hex2Cer(d18:1/20:0"), "Hex2Cer")
 })
 
 test_that("Subclass parser, Hex2Cers", {

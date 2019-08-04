@@ -5,7 +5,7 @@ context("Generation of Shorthand")
 test_that("correct shorthand notation for SPHs", {
   
   # glycerolipids (PCs)
-  expect_equal(get_sph_shorthand("GlcCer(d16:0(15Me)(1OH,4OH)/22:0(2OH[R])", level = "position"), "HexCer(d17:0/22:0(OH))")
+  expect_equal(get_sph_shorthand("GlcCer(d16:0(15Me)(1OH,4OH)/22:0(2OH[R])", level = "structural"), "HexCer(d17:0/22:0(OH))")
 
   
 })

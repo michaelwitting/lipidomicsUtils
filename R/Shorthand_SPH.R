@@ -1,20 +1,20 @@
 #'
 #'
 #' @export
-get_sph_shorthand <- function(x, level = c("position", "acyl", "species")) {
+get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")) {
   
   # detection of functional groups
   # if(stringr::str_detect(x, "\\d+(OOH|O|NH2)")) {
   #   stop("Functional groups other than hydroxyl groups & methyl branches on fatty acyls currently not supported, only DBs")
   # }
   
-  if(level == "position") {
+  if(level == "structural") {
     
     lipid <- .get_sph_position_level(x)
     
-  } else if(level == "acyl") {
+  } else if(level == "molecular") {
     
-    # no difference to position level!!!
+    # no difference to structural level!!!
     lipid <- .get_sph_position_level(x)
     
   } else if(level == "species") {
