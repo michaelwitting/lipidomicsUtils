@@ -11,11 +11,19 @@ calc_intact_acyl_mass <- function(x) {
   
   # check if acyl, alkyl or alkenyl
   if(stringr::str_detect(x, "O-")) {
-    intact_mass <- .alkyl_mass(x)
+    
+    intact_mass <- rcdk::get.formula(.alkyl_formula(x))@mass
+      
+      
+    
   } else if(stringr::str_detect(x, "P-")) {
-    intact_mass <- .alkenyl_mass(x)
+    
+    intact_mass <-  rcdk::get.formula(.alkenyl_formula(x))@mass
+    
   } else {
-    intact_mass <- .acyl_mass(x)
+    
+    intact_mass <- rcdk::get.formula(.acyl_formula(x))@mass
+    
   }
 
   # return fatty acid mass
@@ -35,23 +43,73 @@ calc_residue_acyl_mass <- function(x) {
 
   # check if acyl, alkyl or alkenyl
   if(stringr::str_detect(x, "O-")) {
-    intact_mass <- .alkyl_mass(x)
+    
+    intact_mass <- rcdk::get.formula(.alkyl_formula(x))@mass
+    
+    
+    
   } else if(stringr::str_detect(x, "P-")) {
-    intact_mass <- .alkenyl_mass(x)
+    
+    intact_mass <-  rcdk::get.formula(.alkenyl_formula(x))@mass
+    
   } else {
-    intact_mass <- .acyl_mass(x)
+    
+    intact_mass <- rcdk::get.formula(.acyl_formula(x))@mass
+    
   }
   
-  residue_mass <- intact_mass - lipidomicsUtils:::o_mass - 2 * lipidomicsUtils:::h_mass
+  residue_mass <- intact_mass - rcdk::get.formula("H2O")@mass
 
   # return residue mass
   return(residue_mass)
 }
 
+#'
+#'
+#'
+#' @export
+calc_intact_acyl_formula <- function(x) {
+  
+  # check if acyl, alkyl or alkenyl
+  if(stringr::str_detect(x, "O-")) {
+    intact_formula <- .alkyl_formula(x)
+  } else if(stringr::str_detect(x, "P-")) {
+    intact_formula <- .alkenyl_formula(x)
+  } else {
+    intact_formula <- .acyl_formula(x)
+  }
+  
+  # return formula
+  return(intact_formula)
+  
+}
+
+#'
+#'
+#'
+#' @export
+calc_residue_acyl_formula <- function(x) {
+  
+  # check if acyl, alkyl or alkenyl
+  if(stringr::str_detect(x, "O-")) {
+    intact_formula <- .alkyl_formula(x)
+  } else if(stringr::str_detect(x, "P-")) {
+    intact_formula <- .alkenyl_formula(x)
+  } else {
+    intact_formula <- .acyl_formula(x)
+  }
+  
+  residue_formula <- lipidomicsUtils::formula_subtraction(intact_formula, "H2O")
+  
+  # return formula
+  return(residue_formula)
+  
+}
+
 #' Private function for calculation of intact acyl mass
 #'
 #'
-.acyl_mass <- function(x) {
+.acyl_formula <- function(x) {
   
   # get number of carbons, etc...
   carbon_number <- get_carbon_number(x)
@@ -69,21 +127,23 @@ calc_residue_acyl_mass <- function(x) {
   o_count <- 2 + hydroxy_number + keto_number + 2 * peroxy_number
   n_count <- amino_number
   
-  # calculate fatty acid mass
-  fatty_acid_mass <- c_count * lipidomicsUtils:::c_mass +
-    h_count * lipidomicsUtils:::h_mass +
-    o_count * lipidomicsUtils:::o_mass +
-    n_count * lipidomicsUtils:::n_mass
+  # calculate formula
+  acyl_formula <- paste0("C", c_count,
+                         "H", h_count,
+                         "O", o_count,
+                         "N", n_count)
+    
+  acyl_formula <- lipidomicsUtils::standardize_formula(acyl_formula)
   
-  # return fatty acid mass
-  return(fatty_acid_mass)
+  # return formula
+  return(acyl_formula)
   
 }
 
 #' Private function for calculation of intact alkyl mass
 #'
 #'
-.alkyl_mass <- function(x) {
+.alkyl_formula <- function(x) {
   
   # get number of carbons, etc...
   carbon_number <- get_carbon_number(x)
@@ -101,21 +161,23 @@ calc_residue_acyl_mass <- function(x) {
   o_count <- 1 + hydroxy_number + keto_number + 2 * peroxy_number
   n_count <- amino_number
 
-  # calculate fatty acid mass
-  fatty_alkyl_mass <- c_count * lipidomicsUtils:::c_mass +
-    h_count * lipidomicsUtils:::h_mass +
-    o_count * lipidomicsUtils:::o_mass +
-    n_count * lipidomicsUtils:::n_mass
+  # calculate formula
+  alkyl_formula <- paste0("C", c_count,
+                          "H", h_count,
+                          "O", o_count,
+                          "N", n_count)
   
-  # return fatty acid mass
-  return(fatty_alkyl_mass)
+  alkyl_formula <- lipidomicsUtils::standardize_formula(alkyl_formula)
+  
+  # return formula
+  return(alkyl_formula)
   
 }
 
 #' Private function for calculation of intact alkenyl mass
 #'
 #'
-.alkenyl_mass <- function(x) {
+.alkenyl_formula <- function(x) {
   
   # get number of carbons, etc...
   carbon_number <- get_carbon_number(x)
@@ -133,13 +195,15 @@ calc_residue_acyl_mass <- function(x) {
   o_count <- 1 + hydroxy_number + keto_number + 2 * peroxy_number
   n_count <- amino_number
   
-  # calculate fatty acid mass
-  fatty_alkenyl_mass <- c_count * lipidomicsUtils:::c_mass +
-    h_count * lipidomicsUtils:::h_mass +
-    o_count * lipidomicsUtils:::o_mass +
-    n_count * lipidomicsUtils:::n_mass
+  # calculate formula
+  alkenyl_formula <- paste0("C", c_count,
+                          "H", h_count,
+                          "O", o_count,
+                          "N", n_count)
   
-  # return fatty acid mass
-  return(fatty_alkenyl_mass)
+  alkenyl_formula <- lipidomicsUtils::standardize_formula(alkenyl_formula)
+  
+  # return formula
+  return(alkenyl_formula)
   
 }
