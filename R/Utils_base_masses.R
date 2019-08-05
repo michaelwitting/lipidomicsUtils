@@ -1,3 +1,4 @@
+## atom masses -----------------------------------------------------------------
 # get atom masses
 c_mass <- rcdk::get.formula("C")@mass
 h_mass <- rcdk::get.formula("H")@mass
@@ -6,9 +7,14 @@ n_mass <- rcdk::get.formula("N")@mass
 p_mass <- rcdk::get.formula("P")@mass
 s_mass <- rcdk::get.formula("S")@mass
 
+## general masses --------------------------------------------------------------
 # general base masses
 water_mass <- rcdk::get.formula("H2O")@mass
+h3po4_mass <- rcdk::get.formula("H3PO4")@mass
+h2so4_mass <- rcdk::get.formula("H2SO4")@mass
+hexose_mass <- rcdk::get.formula("C6H12O6")@mass
 
+## Glycerophospholipid base masses ---------------------------------------------
 # get base masses (PCs)
 gpc_mass <- rcdk::get.formula("C8H20NO6P")@mass
 pc_mass <- rcdk::get.formula("C5H14NO4P")@mass
@@ -33,3 +39,13 @@ glycerol_mass <- rcdk::get.formula("C3H8O3")@mass
 gpi_mass <- rcdk::get.formula("C9H19O11P")@mass
 pi_mass <- rcdk::get.formula("C6H13O9P")@mass
 inositol_mass <- rcdk::get.formula("C6H12O6")@mass
+
+# get base masses (PIPs)
+gpip_mass <- rcdk::get.formula("C9H20O14P2")@mass
+pip_mass <- rcdk::get.formula("C6H14O12P2")@mass
+
+# get base masses (PIP2s)
+gpipp_mass <- rcdk::get.formula("C9H21O17P3")@mass
+pipp_mass <- rcdk::get.formula("C6H15O15P3")@mass
+
+## Glycerolipid base masses ----------------------------------------------------

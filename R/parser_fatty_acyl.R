@@ -11,7 +11,7 @@ isolate_fatty_acyls <- function(lipid) {
   
   # get all possible building blocks
   #fatty_acyls <- stringr::str_extract_all(lipid, "(m|d|t|O-|P-)*\\d+:\\d+(\\((\\d*(E|Z|Me|OH|OOH|O|NH2),*)*\\))*")[[1]]
-  fatty_acyls <- stringr::str_extract_all(lipid, "(m|d|t|O-|P-)*\\d+:\\d+(\\((\\d*(E|Z|Me|OH|OOH|O|NH2)(\\[(S|R)\\])*,*)*\\))*")[[1]]
+  fatty_acyls <- stringr::str_extract_all(lipid, "(m|d|t|O-|P-)*\\d+:\\d+(\\((\\d*(E|Z|Me|OH|OOH|O|NH2|delta)(\\[(S|R)\\])*,*)*\\))*")[[1]]
   
   # remove sphingoid bases
   filter <- stringr::str_detect(fatty_acyls, "(m|d|t)", negate = TRUE)

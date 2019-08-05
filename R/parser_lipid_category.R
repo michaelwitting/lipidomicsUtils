@@ -35,7 +35,7 @@ get_lipid_category <- function(lipid) {
 #' @export
 get_lipid_mainclass <- function(lipid) {
   
-  lipid_main_class <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*")
+  lipid_mainclass <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*")
   
   return(lipid_mainclass)
   

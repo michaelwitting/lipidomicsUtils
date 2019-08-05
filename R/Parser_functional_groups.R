@@ -131,3 +131,87 @@ get_amino_number <- function(x) {
   return(amino_number)
   
 }
+
+#TODO:
+# add isolation of functional groups (e.g. vector of strings c("9Z","11Z"))
+
+#'
+#'
+#'
+#' @export
+get_methyl_branches <- function(x) {
+  
+  # get all methyl branches in lipids
+  methyl_branches <- stringr::str_extract_all(x, "\\d+Me")[[1]]
+  
+  return(methyl_branches)
+  
+}
+
+#'
+#'
+#'
+#' @export
+get_double_bonds <- function(x) {
+  
+  # get all double bonds in lipids
+  double_bonds <- stringr::str_extract_all(x, "\\d+(Z|E)")[[1]]
+  
+  return(double_bonds)
+  
+}
+
+#'
+#'
+#'
+#' @export
+get_hydroxy_groups <- function(x) {
+  
+  # get all hydroxy groups in lipids
+  hydroxy_groups <- stringr::str_extract_all(x, "\\d+(OH)(\\[(S|R)\\])*")[[1]]
+  
+  return(hydroxy_groups)
+  
+}
+
+#'
+#'
+#'
+#' @export
+get_keto_groups <- function(x) {
+  
+  # get all keto groups in lipids
+  keto_groups <- stringr::str_extract_all(x, "\\d+O")[[1]]
+  hydroxy_groups <- stringr::str_extract_all(x, "\\d+(OH)(\\[(S|R)\\])*")[[1]]
+  hydroxy_groups <- stringr::str_remove_all(hydroxy_groups, "H")
+  
+  keto_groups <- keto_groups[!keto_groups %in% hydroxy_groups]
+  
+  return(keto_groups)
+}
+
+#'
+#'
+#'
+#' @export
+get_peroxy_groups <- function(x) {
+  
+  # get all peroxy gorups in lipids
+  peroxy_groups <- stringr::str_extract_all(x, "\\d+OOH")
+  
+  return(peroxy_groups)
+  
+}
+
+#'
+#'
+#'
+#' @export
+get_amino_groups <- function(x) {
+  
+  # get all amino groups in lipids
+  amino_groups <- stringr::str_extract_all(x, "\\d+NH2")
+  
+  return(amino_groups)
+  
+}
