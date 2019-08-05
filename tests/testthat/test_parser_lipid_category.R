@@ -28,7 +28,7 @@ test_that("Headgroups correct", {
   expect_equal(get_lipid_category("SPH"), "SP")
   expect_equal(get_lipid_category("Cer"), "SP")
   expect_equal(get_lipid_category("S1P"), "SP")
-  expect_equal(get_lipid_category("C1P"), "SP")
+  expect_equal(get_lipid_category("CerP"), "SP")
   expect_equal(get_lipid_category("SM"), "SP")
   expect_equal(get_lipid_category("GlcCer"), "SP")
   expect_equal(get_lipid_category("GalCer"), "SP")
