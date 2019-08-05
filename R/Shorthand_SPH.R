@@ -32,7 +32,7 @@ get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")
   
   # get subclass
   lipid_subclass <- lipidomicsUtils::get_lipid_subclass(x)
-  lipid_class <- lipidomicsUtils::get_lipid_class(x)
+  lipid_mainclass <- lipidomicsUtils::get_lipid_mainclass(x)
   
   # isolate sphingoid base and fatty acyl
   sphingoid <- lipidomicsUtils::isolate_sphingoid_base(x)
@@ -49,13 +49,13 @@ get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")
   
   # make simple version
   # correct lipid class
-  if(lipid_class %in% c("GlcCer", "GalCer")) {
+  if(lipid_mainclass %in% c("GlcCer", "GalCer")) {
     
-    lipid_class <- "HexCer"
+    lipid_mainclass <- "HexCer"
     
-  } else if(lipid_class %in% c("LacCer")) {
+  } else if(lipid_mainclass %in% c("LacCer")) {
     
-    lipid_class <- "Hex2Cer"
+    lipid_mainclass <- "Hex2Cer"
     
   }
   
@@ -69,7 +69,7 @@ get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")
   }
   
   # make lipid
-  position <- paste0(lipid_class, "(", hydroxy, sphingoid_carbon, ":", sphingoid_bonds, "/", fatty_acyl_carbon, ":", fatty_acyl_bonds)
+  position <- paste0(lipid_mainclass, "(", hydroxy, sphingoid_carbon, ":", sphingoid_bonds, "/", fatty_acyl_carbon, ":", fatty_acyl_bonds)
   
   if(fatty_acyl_hydroxy == 1) {
     position <- paste0(position, "(OH))")
@@ -88,7 +88,7 @@ get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")
   
   # get subclass
   lipid_subclass <- lipidomicsUtils::get_lipid_subclass(x)
-  lipid_class <- lipidomicsUtils::get_lipid_class(x)
+  lipid_mainclass <- lipidomicsUtils::get_lipid_mainclass(x)
   
   # isolate sphingoid base and fatty acyl
   sphingoid <- lipidomicsUtils::isolate_sphingoid_base(x)
@@ -105,13 +105,13 @@ get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")
   
   # make simple version
   # correct lipid class
-  if(lipid_class %in% c("GlcCer", "GalCer")) {
+  if(lipid_mainclass %in% c("GlcCer", "GalCer")) {
     
-    lipid_class <- "HexCer"
+    lipid_mainclass <- "HexCer"
     
-  } else if(lipid_class %in% c("LacCer")) {
+  } else if(lipid_mainclass %in% c("LacCer")) {
     
-    lipid_class <- "Hex2Cer"
+    lipid_mainclass <- "Hex2Cer"
     
   }
   
@@ -131,7 +131,7 @@ get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")
   bonds_total <- sphingoid_bonds + fatty_acyl_bonds
   
   # create lipid
-  species <- paste0(lipid_class, "(", hydroxy, carbon_total, ":", bonds_total, ")")
+  species <- paste0(lipid_mainclass, "(", hydroxy, carbon_total, ":", bonds_total, ")")
   
   return(species)
   

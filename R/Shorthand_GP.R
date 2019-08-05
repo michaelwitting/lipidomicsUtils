@@ -31,7 +31,7 @@ get_gp_shorthand <- function(x, level = c("structural", "molecular", "species"))
   
   # get subclass
   lipid_subclass <- lipidomicsUtils::get_lipid_subclass(x)
-  lipid_class <- lipidomicsUtils::get_lipid_class(x)
+  lipid_mainclass <- lipidomicsUtils::get_lipid_mainclass(x)
   
   # isolate fatty acids
   fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(x)
@@ -58,7 +58,7 @@ get_gp_shorthand <- function(x, level = c("structural", "molecular", "species"))
   }
   
   #generate lipid
-  position <- paste0(lipid_class, "(", etherbond, paste0(fatty_acyls_simple, collapse = "/"), ")")
+  position <- paste0(lipid_mainclass, "(", etherbond, paste0(fatty_acyls_simple, collapse = "/"), ")")
   
   # return result
   return(position)
@@ -69,7 +69,7 @@ get_gp_shorthand <- function(x, level = c("structural", "molecular", "species"))
   
   # get subclass
   lipid_subclass <- lipidomicsUtils::get_lipid_subclass(x)
-  lipid_class <- lipidomicsUtils::get_lipid_class(x)
+  lipid_mainclass <- lipidomicsUtils::get_lipid_mainclass(x)
   
   # isolate fatty acids
   fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(x)
@@ -98,11 +98,11 @@ get_gp_shorthand <- function(x, level = c("structural", "molecular", "species"))
   #generate lipid
   if(stringr::str_detect(lipid_subclass, "-(O|P)")) {
     
-    acyl <- paste0(lipid_class, "(", etherbond, fatty_acyls_simple[1], "_", paste0(sort(fatty_acyls_simple[-1]), collapse = "_"), ")")
+    acyl <- paste0(lipid_mainclass, "(", etherbond, fatty_acyls_simple[1], "_", paste0(sort(fatty_acyls_simple[-1]), collapse = "_"), ")")
     
   } else {
     
-    acyl <- paste0(lipid_class, "(", etherbond, paste0(sort(fatty_acyls_simple), collapse = "_"), ")")
+    acyl <- paste0(lipid_mainclass, "(", etherbond, paste0(sort(fatty_acyls_simple), collapse = "_"), ")")
     
   }
 
@@ -116,7 +116,7 @@ get_gp_shorthand <- function(x, level = c("structural", "molecular", "species"))
   
   # get subclass
   lipid_subclass <- lipidomicsUtils::get_lipid_subclass(x)
-  lipid_class <- lipidomicsUtils::get_lipid_class(x)
+  lipid_mainclass <- lipidomicsUtils::get_lipid_mainclass(x)
   
   # isolate fatty acids
   fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(x)
@@ -133,15 +133,15 @@ get_gp_shorthand <- function(x, level = c("structural", "molecular", "species"))
   # check for possible ether bond
   if(stringr::str_detect(lipid_subclass, "-O")) {
     
-    species <- paste0(lipid_class, "(O-", total_carbon, ":", total_bond, ")")
+    species <- paste0(lipid_mainclass, "(O-", total_carbon, ":", total_bond, ")")
     
   } else if(stringr::str_detect(lipid_subclass, "-P")) {
     
-    species <- paste0(lipid_class, "(O-", total_carbon, ":", total_bond + 1, ")")
+    species <- paste0(lipid_mainclass, "(O-", total_carbon, ":", total_bond + 1, ")")
     
   } else {
     
-    species <- paste0(lipid_class, "(", total_carbon, ":", total_bond, ")")
+    species <- paste0(lipid_mainclass, "(", total_carbon, ":", total_bond, ")")
     
   }
   
