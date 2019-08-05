@@ -3,22 +3,22 @@
 #' @export
 get_lipid_category <- function(lipid) {
   
-  lipid_class <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*")
+  lipid_mainclass <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*")
   
-  if(lipid_class %in% c("FA", "CoA", "NAE")) {
+  if(lipid_mainclass %in% c("FA", "CoA", "NAE", "PNAE")) {
     
     lipid_category <- "FA"
     
-  } else if(lipid_class %in% c("MG", "DG", "TG")) {
+  } else if(lipid_mainclass %in% c("MG", "DG", "TG")) {
     
     lipid_category <- "GL"
     
-  } else if(lipid_class %in% c("PC", "PE", "PS", "PG", "PGP", "PI", "PIP",
-                                "PIP2", "PIP3", "PA", "PPA", "CL", "CDP-DG")) {
+  } else if(lipid_mainclass %in% c("PC", "PE", "PS", "PG", "PGP", "PI", "PIP",
+                                "PIP2", "PIP3", "PA", "PPA", "CL", "CDP-DG", "NAPE")) {
     
     lipid_category <- "GP"
     
-  } else if(lipid_class %in% c("SPH", "Cer", "S1P", "C1P", "SM", "GlcCer",
+  } else if(lipid_mainclass %in% c("SPH", "Cer", "S1P", "CerP", "SM", "GlcCer",
                                "GalCer", "LacCer", "HexCer", "Hex2Cer")) {
     
     lipid_category <- "SP"
