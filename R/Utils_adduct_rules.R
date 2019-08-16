@@ -177,7 +177,7 @@ adduct_rules <- function() {
                            formula_sub = 'C0',
                            charge = -1),
     '[M+HAc-H]-'    = list(mass_multi = 1,
-                           mass_add = rcdk::get.formula('C2H3O2', charge = 1)@mass,
+                           mass_add = rcdk::get.formula('C2H3O2', charge = -1)@mass,
                            formula_add = 'C2H3O2',
                            formula_sub = 'C0',
                            charge = -1),
