@@ -3,8 +3,11 @@
 #' This functions isolates all fatty acyls, alkyls and alkenyls from a given lipid shorthand notation and returns them as vector. upported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2)
 #' 
 #' @param lipid Shorthand notation of a acyl (as string), e.g. "PC(18:0/20:4(7E,9E,11Z,14Z)(5OH[S],6OH[R])"
-#' @example 
+#' @examples
+#' library(lipidomicsUtils) 
 #' isolate_fatty_acyls("PC(18:0/20:4(7E,9E,11Z,14Z)(5OH[S],6OH[R])")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
 #' @export
 isolate_fatty_acyls <- function(lipid) {

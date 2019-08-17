@@ -2,10 +2,30 @@
 % Please edit documentation in R/Parser_lipid_category.R
 \name{get_lipid_category}
 \alias{get_lipid_category}
-\title{Lipid category (according to LIPIDMAPS)}
+\title{Determine the lipid category
+
+This function determines the lipid category to which a lipid given as shorthand notation belongs}
 \usage{
 get_lipid_category(lipid)
 }
+\arguments{
+\item{lipid}{Lipid for which the category shall be determined.}
+}
 \description{
-Lipid category (according to LIPIDMAPS)
+Determine the lipid category
+
+This function determines the lipid category to which a lipid given as shorthand notation belongs
+}
+\examples{
+library(lipidomicsUtils)
+get_lipid_category("PC(16:0/18:1(9Z)")
+
+}
+\seealso{
+\code{\link{get_lipid_mainclass}}
+
+\code{\link{get_lipid_subclass}}
+}
+\author{
+Michael Witting, \email{michael.witting@helmholtz-muenchen.de}
 }

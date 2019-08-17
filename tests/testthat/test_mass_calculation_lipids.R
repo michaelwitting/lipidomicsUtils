@@ -1,7 +1,57 @@
 library(lipidomicsUtils)
 context("Calculation of lipid masses")
 
-## tests correct calculation of acyl masses (intact acid or alcohol) -----------
+## tests correct calculation of FA masses  -------------------------------------
+test_that("correct calculation of lipid masses, FAs", {
+  
+  # mass of PC(18:0/18:1(9Z)), LMGP01010761
+  expect_equal(round(calc_lipid_mass("FA(18:1(9Z))"), 4), 282.2559)
+  expect_equal(round(calc_lipid_mass("FA(16:0)"), 4), 256.2402)
+  expect_equal(round(calc_lipid_mass("FA(20:4)"), 4), 304.2402)
+  
+})
+
+## tests correct calculation of CoA masses  ------------------------------------
+test_that("correct calculation of lipid masses, CoAs", {
+  
+  # mass of PC(18:0/18:1(9Z)), LMGP01010761
+  expect_equal(round(calc_lipid_mass("CoA(18:1(9Z))"), 4), 1031.3605)
+  expect_equal(round(calc_lipid_mass("CoA(16:0)"), 4), 1005.3449)
+  expect_equal(round(calc_lipid_mass("CoA(20:4)"), 4), 1053.3449)
+  
+})
+
+## tests correct calculation of NAE masses  ------------------------------------
+test_that("correct calculation of lipid masses, NAEs", {
+  
+  # mass of PC(18:0/18:1(9Z)), LMGP01010761
+  expect_equal(round(calc_lipid_mass("NAE(18:1(9Z))"), 4), 325.2981)
+  expect_equal(round(calc_lipid_mass("NAE(16:0)"), 4), 299.2824)
+  expect_equal(round(calc_lipid_mass("NAE(20:4)"), 4), 347.2824)
+  
+})
+
+## tests correct calculation of PNAE masses  -----------------------------------
+test_that("correct calculation of lipid masses, PNAEs", {
+  
+  # mass of PC(18:0/18:1(9Z)), LMGP01010761
+  expect_equal(round(calc_lipid_mass("PNAE(18:1(9Z))"), 4), 405.2644)
+  expect_equal(round(calc_lipid_mass("PNAE(16:0)"), 4), 379.2488)
+  expect_equal(round(calc_lipid_mass("PNAE(20:4)"), 4), 427.2488)
+  
+})
+
+## tests correct calculation of GPNAE masses  ----------------------------------
+test_that("correct calculation of lipid masses, PNAEs", {
+  
+  # mass of PC(18:0/18:1(9Z)), LMGP01010761
+  expect_equal(round(calc_lipid_mass("GPNAE(18:1(9Z))"), 4), 479.3012)
+  expect_equal(round(calc_lipid_mass("GPNAE(16:0)"), 4), 453.2855)
+  expect_equal(round(calc_lipid_mass("GPNAE(20:4)"), 4), 501.2855)
+  
+})
+
+## tests correct calculation of PC masses  -------------------------------------
 test_that("correct calculation of lipid masses, PCs", {
 
   # mass of PC(18:0/18:1(9Z)), LMGP01010761
@@ -15,7 +65,7 @@ test_that("correct calculation of lipid masses, PCs", {
   
 })
 
-## tests correct calculation of acyl masses (intact acid or alcohol) -----------
+## tests correct calculation of PE masses --------------------------------------
 test_that("correct calculation of lipid masses, PEs", {
   
   # mass of PE(18:0/18:1(9Z)), LMGP02010036
@@ -29,7 +79,7 @@ test_that("correct calculation of lipid masses, PEs", {
   
 })
 
-## tests correct calculation of acyl masses (intact acid or alcohol) -----------
+## tests correct calculation of PS masses --------------------------------------
 test_that("correct calculation of lipid masses, PSs", {
   
   # mass of PS(18:0/18:1(9Z)), LMGP03010025
@@ -43,7 +93,7 @@ test_that("correct calculation of lipid masses, PSs", {
   
 })
 
-## tests correct calculation of acyl masses (intact acid or alcohol) -----------
+## tests correct calculation of PGS masses -------------------------------------
 test_that("correct calculation of lipid masses, PGs", {
   
   # mass of PG(18:0/18:1(9Z)), LMGP04010037

@@ -3,8 +3,15 @@
 #' This function calculates the mass of an acyl, alkyl or alkenyl given as shorthand notation, e.g. "18:1(9Z)" and calculates the mass of the respective intact fatty acid or alcohol. Supported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2).
 #' 
 #' @param x Shorthand notation of a acyl, alkyl, alkenyl (as string), e.g. "18:1(9Z)"
-#' @example 
-#' calc_acyl_mass("18:1(9Z)")
+#' @examples 
+#' library(lipidomicsUtils)
+#' calc_intact_acyl_mass("18:1(9Z)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'
+#' @seealso \code{\link{calc_residue_acyl_mass}}
+#' @seealso \code{\link{calc_intact_acyl_formula}}
+#' @seealso \code{\link{calc_residue_acyl_formula}}
 #'
 #' @export
 calc_intact_acyl_mass <- function(x) {
@@ -13,8 +20,6 @@ calc_intact_acyl_mass <- function(x) {
   if(stringr::str_detect(x, "O-")) {
     
     intact_mass <- rcdk::get.formula(.alkyl_formula(x))@mass
-      
-      
     
   } else if(stringr::str_detect(x, "P-")) {
     
@@ -35,8 +40,15 @@ calc_intact_acyl_mass <- function(x) {
 #' This function calculates the mass of an acyl, alkyl or alkenyl given as shorthand notation, e.g. "18:1(9Z)" and calculates the mass of the respective residue fatty acid or alcohol. Supported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2).
 #'
 #' @param x Shorthand notation of a acyl, alkyl, alkenyl (as string), e.g. "18:1(9Z)"
-#' @example
-#' calc_acyl_mass("18:1(9Z)")
+#' @examples 
+#' library(lipidomicsUtils)
+#' calc_residue_acyl_mass("18:1(9Z)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'
+#' @seealso \code{\link{calc_intact_acyl_mass}}
+#' @seealso \code{\link{calc_intact_acyl_formula}}
+#' @seealso \code{\link{calc_residue_acyl_formula}}
 #'
 #' @export
 calc_residue_acyl_mass <- function(x) {
@@ -45,8 +57,6 @@ calc_residue_acyl_mass <- function(x) {
   if(stringr::str_detect(x, "O-")) {
     
     intact_mass <- rcdk::get.formula(.alkyl_formula(x))@mass
-    
-    
     
   } else if(stringr::str_detect(x, "P-")) {
     
@@ -64,19 +74,37 @@ calc_residue_acyl_mass <- function(x) {
   return(residue_mass)
 }
 
+#' @title Calculation of acyl, alkyl or alkenyl formula (intact fatty acid or fatty alcohol)
 #'
+#' This function calculates the formula of an acyl, alkyl or alkenyl given as shorthand notation, e.g. "18:1(9Z)" and calculates the formula of the respective intact fatty acid or alcohol. Supported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2).
 #'
+#' @param x Shorthand notation of a acyl, alkyl, alkenyl (as string), e.g. "18:1(9Z)"
+#' @examples 
+#' library(lipidomicsUtils)
+#' calc_intact_acyl_formula("18:1(9Z)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'
+#' @seealso \code{\link{calc_intact_acyl_mass}}
+#' @seealso \code{\link{calc_intact_acyl_mass}}
+#' @seealso \code{\link{calc_residue_acyl_formula}}
 #'
 #' @export
 calc_intact_acyl_formula <- function(x) {
   
   # check if acyl, alkyl or alkenyl
   if(stringr::str_detect(x, "O-")) {
+    
     intact_formula <- .alkyl_formula(x)
+    
   } else if(stringr::str_detect(x, "P-")) {
+    
     intact_formula <- .alkenyl_formula(x)
+    
   } else {
+    
     intact_formula <- .acyl_formula(x)
+    
   }
   
   # return formula
@@ -84,19 +112,37 @@ calc_intact_acyl_formula <- function(x) {
   
 }
 
+#' @title Calculation of acyl, alkyl or alkenyl formula (residue fatty acid or fatty alcohol)
 #'
+#' This function calculates the formula of an acyl, alkyl or alkenyl given as shorthand notation, e.g. "18:1(9Z)" and calculates the formula of the respective residue fatty acid or alcohol. Supported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2).
 #'
+#' @param x Shorthand notation of a acyl, alkyl, alkenyl (as string), e.g. "18:1(9Z)"
+#' @examples 
+#' library(lipidomicsUtils)
+#' calc_intact_residue_formula("18:1(9Z)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#'
+#' @seealso \code{\link{calc_intact_acyl_mass}}
+#' @seealso \code{\link{calc_intact_acyl_mass}}
+#' @seealso \code{\link{calc_intact_acyl_formula}}
 #'
 #' @export
 calc_residue_acyl_formula <- function(x) {
   
   # check if acyl, alkyl or alkenyl
   if(stringr::str_detect(x, "O-")) {
+    
     intact_formula <- .alkyl_formula(x)
+    
   } else if(stringr::str_detect(x, "P-")) {
+    
     intact_formula <- .alkenyl_formula(x)
+    
   } else {
+    
     intact_formula <- .acyl_formula(x)
+    
   }
   
   residue_formula <- lipidomicsUtils::formula_subtraction(intact_formula, "H2O")
@@ -106,7 +152,7 @@ calc_residue_acyl_formula <- function(x) {
   
 }
 
-#' Private function for calculation of intact acyl mass
+#' Private function for calculation of intact acyl formula
 #'
 #'
 .acyl_formula <- function(x) {
@@ -140,7 +186,7 @@ calc_residue_acyl_formula <- function(x) {
   
 }
 
-#' Private function for calculation of intact alkyl mass
+#' Private function for calculation of intact alkyl formula
 #'
 #'
 .alkyl_formula <- function(x) {
@@ -174,7 +220,7 @@ calc_residue_acyl_formula <- function(x) {
   
 }
 
-#' Private function for calculation of intact alkenyl mass
+#' Private function for calculation of intact alkenyl formula
 #'
 #'
 .alkenyl_formula <- function(x) {

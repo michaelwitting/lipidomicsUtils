@@ -16,3 +16,11 @@ Get all fatty acyls, alkyls and alkenyls
 
 This functions isolates all fatty acyls, alkyls and alkenyls from a given lipid shorthand notation and returns them as vector. upported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2)
 }
+\examples{
+library(lipidomicsUtils) 
+isolate_fatty_acyls("PC(18:0/20:4(7E,9E,11Z,14Z)(5OH[S],6OH[R])")
+
+}
+\author{
+Michael Witting, \email{michael.witting@helmholtz-muenchen.de}
+}

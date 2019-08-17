@@ -1,10 +1,19 @@
 #' @title Get number of carbons
 #' 
-#' This function returns the number of carbons in a acyl, alkyl, alkenyl or sphingoid base based on a supplied shorthand notation, e.g. d16:1(4E)(1OH,3OH)(15Me)
+#' This function returns the number of carbons in a acyl, alkyl, alkenyl, sphingoid base etc.
 #' 
-#' @param x Shorthand notation of a acyl, alkyl, alkenyl (as string), e.g. "d16:1(4E)(1OH,3OH)(15Me)"
-#' @example 
-#' get_carbon_number("d16:1(4E)(1OH,3OH)(15Me)")
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_carbon_number("d16:1(1OH,3OH,15Me)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_bond_number}}
+#' @seealso \code{\link{get_hydroxy_number}}
+#' @seealso \code{\link{get_peroxy_number}}
+#' @seealso \code{\link{get_keto_number}}
+#' @seealso \code{\link{get_amino_number}}
 #'
 #' @export
 get_carbon_number <- function(x) {
@@ -20,7 +29,22 @@ get_carbon_number <- function(x) {
   
 }
 
-#' @title Get number of double bond
+#' @title Get number of Double Bonds
+#' 
+#' This function returns the number of double bonds in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_bond_number("d16:1(1OH,3OH,15Me)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_carbon_number}}
+#' @seealso \code{\link{get_hydroxy_number}}
+#' @seealso \code{\link{get_peroxy_number}}
+#' @seealso \code{\link{get_keto_number}}
+#' @seealso \code{\link{get_amino_number}}
 #'
 #' @export
 get_bond_number <- function(x) {
@@ -34,7 +58,22 @@ get_bond_number <- function(x) {
   
 }
 
-#'
+#' @title Get number of hydroxy groups
+#' 
+#' This function returns the number of hydroxy groups in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_hydroxy_number("d16:1(1OH,3OH,15Me)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_carbon_number}}
+#' @seealso \code{\link{get_bond_number}}
+#' @seealso \code{\link{get_peroxy_number}}
+#' @seealso \code{\link{get_keto_number}}
+#' @seealso \code{\link{get_amino_number}}
 #'
 #' @export
 get_hydroxy_number <- function(x) {
@@ -75,7 +114,22 @@ get_hydroxy_number <- function(x) {
   
 }
 
-#'
+#' @title Get number of peroxy groups
+#' 
+#' This function returns the number of peroxy groups in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_peroxy_number("18:0(5OOH[R])")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_carbon_number}}
+#' @seealso \code{\link{get_bond_number}}
+#' @seealso \code{\link{get_hydroxy_number}}
+#' @seealso \code{\link{get_keto_number}}
+#' @seealso \code{\link{get_amino_number}}
 #'
 #' @export
 get_peroxy_number <- function(x) {
@@ -93,7 +147,22 @@ get_peroxy_number <- function(x) {
   
 }
 
-#'
+#' @title Get number of keto groups
+#' 
+#' This function returns the number of keto groups in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_keto_number("18:0(3O)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_carbon_number}}
+#' @seealso \code{\link{get_bond_number}}
+#' @seealso \code{\link{get_hydroxy_number}}
+#' @seealso \code{\link{get_peroxy_number}}
+#' @seealso \code{\link{get_amino_number}}
 #'
 #' @export
 get_keto_number <- function(x) {
@@ -111,7 +180,22 @@ get_keto_number <- function(x) {
   
 }
 
-#'
+#' @title Get number of keto groups
+#' 
+#' This function returns the number of keto groups in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_amino_number("18:0(2NH2)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_carbon_number}}
+#' @seealso \code{\link{get_bond_number}}
+#' @seealso \code{\link{get_hydroxy_number}}
+#' @seealso \code{\link{get_peroxy_number}}
+#' @seealso \code{\link{get_keto_number}}
 #'
 #' @export
 get_amino_number <- function(x) {
@@ -132,85 +216,167 @@ get_amino_number <- function(x) {
   
 }
 
-#TODO:
-# add isolation of functional groups (e.g. vector of strings c("9Z","11Z"))
-
-#'
-#'
+#' @title Get all methyl branches
+#' 
+#' This function returns all methyl branches in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_methyl_branches("d16:1(1OH,3OH,15Me)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_double_bonds}}
+#' @seealso \code{\link{get_hydroxy_groups}}
+#' @seealso \code{\link{get_keto_groups}}
+#' @seealso \code{\link{get_peroxy_groups}}
+#' @seealso \code{\link{get_amino_groups}}
 #'
 #' @export
 get_methyl_branches <- function(x) {
   
   # get all methyl branches in lipids
-  methyl_branches <- stringr::str_extract_all(x, "\\d+Me")[[1]]
+  methyl_branches <- unlist(stringr::str_extract_all(x, "\\d+Me")[[1]])
   
   return(methyl_branches)
   
 }
 
-#'
-#'
+#' @title Get all double bonds
+#' 
+#' This function returns all double bonds in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_double_bonds("d16:1(1OH,3OH,15Me)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_methyl_branches}}
+#' @seealso \code{\link{get_hydroxy_groups}}
+#' @seealso \code{\link{get_keto_groups}}
+#' @seealso \code{\link{get_peroxy_groups}}
+#' @seealso \code{\link{get_amino_groups}}
 #'
 #' @export
 get_double_bonds <- function(x) {
   
   # get all double bonds in lipids
-  double_bonds <- stringr::str_extract_all(x, "\\d+(Z|E)")[[1]]
+  double_bonds <- unlist(stringr::str_extract_all(x, "\\d+(Z|E)")[[1]])
   
   return(double_bonds)
   
 }
 
-#'
-#'
+#' @title Get all hydroxy groups
+#' 
+#' This function returns all hydroxy groups in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_double_bonds("d16:1(1OH,3OH,15Me)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_methyl_branches}}
+#' @seealso \code{\link{get_double_bonds}}
+#' @seealso \code{\link{get_keto_groups}}
+#' @seealso \code{\link{get_peroxy_groups}}
+#' @seealso \code{\link{get_amino_groups}}
 #'
 #' @export
 get_hydroxy_groups <- function(x) {
   
   # get all hydroxy groups in lipids
-  hydroxy_groups <- stringr::str_extract_all(x, "\\d+(OH)(\\[(S|R)\\])*")[[1]]
+  hydroxy_groups <- unlist(stringr::str_extract_all(x, "\\d+(OH)(\\[(S|R)\\])*")[[1]])
   
   return(hydroxy_groups)
   
 }
 
-#'
-#'
+#' @title Get all keto groups
+#' 
+#' This function returns all keto groups in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_keto_groups("18:0(3O)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_methyl_branches}}
+#' @seealso \code{\link{get_double_bonds}}
+#' @seealso \code{\link{get_hydroxy_groups}}
+#' @seealso \code{\link{get_peroxy_groups}}
+#' @seealso \code{\link{get_amino_groups}}
 #'
 #' @export
 get_keto_groups <- function(x) {
   
   # get all keto groups in lipids
-  keto_groups <- stringr::str_extract_all(x, "\\d+O")[[1]]
-  hydroxy_groups <- stringr::str_extract_all(x, "\\d+(OH)(\\[(S|R)\\])*")[[1]]
-  hydroxy_groups <- stringr::str_remove_all(hydroxy_groups, "H")
+  keto_groups <- unlist(stringr::str_extract_all(x, "\\d+O")[[1]])
+  hydroxy_groups <- unlist(stringr::str_extract_all(x, "\\d+(OH)(\\[(S|R)\\])*")[[1]])
+  hydroxy_groups <- unlist(stringr::str_remove_all(hydroxy_groups, "\\[(S|R)\\]"))
+  hydroxy_groups <- unlist(stringr::str_remove_all(hydroxy_groups, "H"))
   
   keto_groups <- keto_groups[!keto_groups %in% hydroxy_groups]
-  
+
   return(keto_groups)
 }
 
-#'
-#'
+#' @title Get all peroxy groups
+#' 
+#' This function returns all peroxy groups in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_peroxy_groups("18:0(5OOH)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_methyl_branches}}
+#' @seealso \code{\link{get_double_bonds}}
+#' @seealso \code{\link{get_hydroxy_groups}}
+#' @seealso \code{\link{get_keto_groups}}
+#' @seealso \code{\link{get_amino_groups}}
 #'
 #' @export
 get_peroxy_groups <- function(x) {
   
   # get all peroxy gorups in lipids
-  peroxy_groups <- stringr::str_extract_all(x, "\\d+OOH")
+  peroxy_groups <- unlist(stringr::str_extract_all(x, "\\d+OOH"))
   
   return(peroxy_groups)
   
 }
 
-#'
-#'
+#' @title Get all amino groups
+#' 
+#' This function returns all amino groups in a acyl, alkyl, alkenyl, sphingoid base etc.
+#' 
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_peroxy_groups("18:0(5NH2)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_methyl_branches}}
+#' @seealso \code{\link{get_double_bonds}}
+#' @seealso \code{\link{get_hydroxy_groups}}
+#' @seealso \code{\link{get_keto_groups}}
+#' @seealso \code{\link{get_peroxy_groups}}
 #'
 #' @export
 get_amino_groups <- function(x) {
   
   # get all amino groups in lipids
-  amino_groups <- stringr::str_extract_all(x, "\\d+NH2")
+  amino_groups <- unlist(stringr::str_extract_all(x, "\\d+NH2"))
   
   return(amino_groups)
   

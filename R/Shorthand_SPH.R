@@ -1,4 +1,14 @@
-#'
+#' @title Generation of different shorthand notation level
+#' 
+#' This function simplifies a given shorthand notation to a lower level notation, e.g. Cer(d16:1(4E,1OH,3OH,15Me)/22:0) to Cer(d17:1/22:0) or Cer(d39:1).
+#' 
+#' @param x Shorthand notation of a fatty acyl lipid, e.g. Cer(d16:1(4E,1OH,3OH,15Me)/22:0)
+#' @param level Either \code{structural}, \code{molecular} or \code{species} for the respective levels according to SwissLipids hierachy
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_gl_shorthand("Cer(d16:1(4E,1OH,3OH,15Me)/22:0)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
 #' @export
 get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")) {
@@ -28,6 +38,9 @@ get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")
   
 }
 
+#' Private function
+#' 
+#' 
 .get_sph_position_level <- function(x) {
   
   # get subclass
@@ -84,6 +97,9 @@ get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")
   
 }
 
+#' Private function
+#' 
+#' 
 .get_sph_species_level <- function(x) {
   
   # get subclass

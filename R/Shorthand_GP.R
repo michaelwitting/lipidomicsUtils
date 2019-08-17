@@ -1,4 +1,14 @@
-#'
+#' @title Generation of different shorthand notation level
+#' 
+#' This function simplifies a given shorthand notation to a lower level notation, e.g. PC(16:0/18:2(9Z,12Z)) to PC(16:0/18:2) or PC(16:0_18:2) or PC(34:2).
+#' 
+#' @param x Shorthand notation of a fatty acyl lipid, e.g. PC(16:0/18:2(9Z,12Z))
+#' @param level Either \code{structural}, \code{molecular} or \code{species} for the respective levels according to SwissLipids hierachy
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_gl_shorthand("PC(16:0/18:2(9Z,12Z))")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
 #' @export
 get_gp_shorthand <- function(x, level = c("structural", "molecular", "species")) {
@@ -27,6 +37,9 @@ get_gp_shorthand <- function(x, level = c("structural", "molecular", "species"))
   
 }
 
+#' Private function
+#' 
+#' 
 .get_gp_position_level <- function(x) {
   
   # get subclass
@@ -65,6 +78,9 @@ get_gp_shorthand <- function(x, level = c("structural", "molecular", "species"))
   
 }
 
+#' Private function
+#' 
+#' 
 .get_gp_acyl_level <- function(x) {
   
   # get subclass
@@ -105,13 +121,15 @@ get_gp_shorthand <- function(x, level = c("structural", "molecular", "species"))
     acyl <- paste0(lipid_mainclass, "(", etherbond, paste0(sort(fatty_acyls_simple), collapse = "_"), ")")
     
   }
-
   
   # return result
   return(acyl)
   
 }
 
+#' Private function
+#' 
+#' 
 .get_gp_species_level <- function(x) {
   
   # get subclass
@@ -144,7 +162,6 @@ get_gp_shorthand <- function(x, level = c("structural", "molecular", "species"))
     species <- paste0(lipid_mainclass, "(", total_carbon, ":", total_bond, ")")
     
   }
-  
   
   # return result
   return(species)

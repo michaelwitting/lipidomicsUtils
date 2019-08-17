@@ -9,12 +9,18 @@ s_mass <- rcdk::get.formula("S")@mass
 
 ## general masses --------------------------------------------------------------
 # general base masses
+coa_mass <- rcdk::get.formula("C21H36N7O16P3S")@mass
 water_mass <- rcdk::get.formula("H2O")@mass
 h3po4_mass <- rcdk::get.formula("H3PO4")@mass
 h2so4_mass <- rcdk::get.formula("H2SO4")@mass
 hexose_mass <- rcdk::get.formula("C6H12O6")@mass
+dihexose_mass <- rcdk::get.formula("C12H22O11")@mass
 
-## Glycerophospholipid base masses ---------------------------------------------
+## ion masses ------------------------------------------------------------------
+proton_mass <- rcdk::get.formula("H", charge = 1)@mass
+sodium_ion_mass <- rcdk::get.formula("Na", charge = 1)@mass
+
+## Gylcero- and Glycerophospholipid base masses --------------------------------
 # get base masses (PCs)
 gpc_mass <- rcdk::get.formula("C8H20NO6P")@mass
 pc_mass <- rcdk::get.formula("C5H14NO4P")@mass
@@ -48,4 +54,5 @@ pip_mass <- rcdk::get.formula("C6H14O12P2")@mass
 gpipp_mass <- rcdk::get.formula("C9H21O17P3")@mass
 pipp_mass <- rcdk::get.formula("C6H15O15P3")@mass
 
-## Glycerolipid base masses ----------------------------------------------------
+# get base masses (CLs)
+cl_mass <- rcdk::get.formula("C9H22O13P2")@mass

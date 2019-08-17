@@ -1,11 +1,23 @@
-#' @title Lipid category (according to LIPIDMAPS)
+#' @title Determine the lipid category
+#' 
+#' This function determines the lipid category to which a lipid given as shorthand notation belongs
+#' 
+#' @param lipid Lipid for which the category shall be determined.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_lipid_category("PC(16:0/18:1(9Z)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_lipid_mainclass}}
+#' @seealso \code{\link{get_lipid_subclass}}
 #'
 #' @export
 get_lipid_category <- function(lipid) {
   
   lipid_mainclass <- stringr::str_extract(lipid, "^([A-Za-z0-9])*-*([A-Za-z0-9])*")
   
-  if(lipid_mainclass %in% c("FA", "CoA", "NAE", "PNAE")) {
+  if(lipid_mainclass %in% c("FA", "CoA", "NAE", "PNAE", "GPNAE")) {
     
     lipid_category <- "FA"
     
@@ -30,7 +42,19 @@ get_lipid_category <- function(lipid) {
   }
 }
 
-#' @title Lipid class (according to LIPIDMAPS)
+#' @title Determine the lipid main class
+#' 
+#' This function determines the lipid main class to which a lipid given as shorthand notation belongs
+#' 
+#' @param lipid Lipid for which the main class shall be determined.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_lipid_category("PC(16:0/18:1(9Z)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_lipid_category}}
+#' @seealso \code{\link{get_lipid_subclass}}
 #'
 #' @export
 get_lipid_mainclass <- function(lipid) {
@@ -41,7 +65,19 @@ get_lipid_mainclass <- function(lipid) {
   
 }
 
-#' @title Lipid subclass (according to LIPIDMAPS)
+#' @title Determine the lipid sub class
+#' 
+#' This function determines the lipid sub class to which a lipid given as shorthand notation belongs
+#' 
+#' @param lipid Lipid for which the sub class shall be determined.
+#' @examples 
+#' library(lipidomicsUtils)
+#' get_lipid_category("PC(16:0/18:1(9Z)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{get_lipid_category}}
+#' @seealso \code{\link{get_lipid_mainclass}}
 #'
 #' @export
 get_lipid_subclass <- function(lipid) {

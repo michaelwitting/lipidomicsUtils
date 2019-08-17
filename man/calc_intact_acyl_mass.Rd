@@ -16,3 +16,18 @@ Calculation of acyl, alkyl or alkenyl mass (intact fatty acid or fatty alcohol)
 
 This function calculates the mass of an acyl, alkyl or alkenyl given as shorthand notation, e.g. "18:1(9Z)" and calculates the mass of the respective intact fatty acid or alcohol. Supported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2).
 }
+\examples{
+library(lipidomicsUtils)
+calc_intact_acyl_mass("18:1(9Z)")
+
+}
+\seealso{
+\code{\link{calc_residue_acyl_mass}}
+
+\code{\link{calc_intact_acyl_formula}}
+
+\code{\link{calc_residue_acyl_formula}}
+}
+\author{
+Michael Witting, \email{michael.witting@helmholtz-muenchen.de}
+}

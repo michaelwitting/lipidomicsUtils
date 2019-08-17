@@ -4,15 +4,34 @@
 \alias{get_carbon_number}
 \title{Get number of carbons
 
-This function returns the number of carbons in a acyl, alkyl, alkenyl or sphingoid base based on a supplied shorthand notation, e.g. d16:1(4E)(1OH,3OH)(15Me)}
+This function returns the number of carbons in a acyl, alkyl, alkenyl, sphingoid base etc.}
 \usage{
 get_carbon_number(x)
 }
 \arguments{
-\item{x}{Shorthand notation of a acyl, alkyl, alkenyl (as string), e.g. "d16:1(4E)(1OH,3OH)(15Me)"}
+\item{lipid}{Lipid for which the mass shall be calculated.}
 }
 \description{
 Get number of carbons
 
-This function returns the number of carbons in a acyl, alkyl, alkenyl or sphingoid base based on a supplied shorthand notation, e.g. d16:1(4E)(1OH,3OH)(15Me)
+This function returns the number of carbons in a acyl, alkyl, alkenyl, sphingoid base etc.
+}
+\examples{
+library(lipidomicsUtils)
+get_carbon_number("d16:1(1OH,3OH,15Me)")
+
+}
+\seealso{
+\code{\link{get_bond_number}}
+
+\code{\link{get_hydroxy_number}}
+
+\code{\link{get_peroxy_number}}
+
+\code{\link{get_keto_number}}
+
+\code{\link{get_amino_number}}
+}
+\author{
+Michael Witting, \email{michael.witting@helmholtz-muenchen.de}
 }

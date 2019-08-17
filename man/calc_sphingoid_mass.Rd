@@ -2,17 +2,28 @@
 % Please edit documentation in R/Calc_sphingoid_mass.R
 \name{calc_sphingoid_mass}
 \alias{calc_sphingoid_mass}
-\title{Calculation of sphingoid base mass (intact sphingoid base)
+\title{Calculation of sphingoid mass
 
-This function calculates the mass of a sphingnoid base given as shorthand notation, e.g. "d16:1(4E)(15Me)" and calculates the mass of the respective sphingoid base. Supported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2).}
+This function calculates the mass of a sphingoid base.}
 \usage{
-calc_sphingoid_mass(x)
+calc_sphingoid_mass(sphingoid_base)
 }
 \arguments{
-\item{x}{Shorthand notation of a sphingoid base (as string), e.g. "d16:1(4E)(15Me)"}
+\item{lipid}{Lipid for which the mass shall be calculated.}
 }
 \description{
-Calculation of sphingoid base mass (intact sphingoid base)
+Calculation of sphingoid mass
 
-This function calculates the mass of a sphingnoid base given as shorthand notation, e.g. "d16:1(4E)(15Me)" and calculates the mass of the respective sphingoid base. Supported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2).
+This function calculates the mass of a sphingoid base.
+}
+\examples{
+library(lipidomicsUtils)
+calc_sphingoid_mass("d16:1(1OH,3OH,15Me)")
+
+}
+\seealso{
+\code{\link{calc_sphingoid_formula}}
+}
+\author{
+Michael Witting, \email{michael.witting@helmholtz-muenchen.de}
 }

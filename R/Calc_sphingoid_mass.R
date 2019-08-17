@@ -1,16 +1,21 @@
-#' @title Calculation of sphingoid base mass (intact sphingoid base)
+#' @title Calculation of sphingoid mass
 #' 
-#' This function calculates the mass of a sphingnoid base given as shorthand notation, e.g. "d16:1(4E)(15Me)" and calculates the mass of the respective sphingoid base. Supported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2).
+#' This function calculates the mass of a sphingoid base.
 #' 
-#' @param x Shorthand notation of a sphingoid base (as string), e.g. "d16:1(4E)(15Me)"
-#' @example 
-#' calc_sphingoid_mass("d16:1(4E)(15Me)")
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' calc_sphingoid_mass("d16:1(1OH,3OH,15Me)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{calc_sphingoid_formula}}
 #'
 #' @export
-calc_sphingoid_mass <- function(x) {
+calc_sphingoid_mass <- function(sphingoid_base) {
   
   # calculate formula
-  sphingoid_formula <- lipidomicsUtils::calc_sphingoid_formula(x)
+  sphingoid_formula <- lipidomicsUtils::calc_sphingoid_formula(sphingoid_base)
   
   # calculate sphingoid mass
   sphingoid_mass <- rcdk::get.formula(sphingoid_formula)@mass
@@ -19,26 +24,31 @@ calc_sphingoid_mass <- function(x) {
   return(sphingoid_mass)
 }
 
-#' @title Calculation of sphingoid base formula (intact sphingoid base)
+#' @title Calculation of sphingoid formula
 #' 
-#' This function calculates the mass of a sphingnoid base given as shorthand notation, e.g. "d16:1(4E)(15Me)" and calculates the mass of the respective sphingoid base. Supported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2).
+#' This function calculates the formula of a sphingoid base.
 #' 
-#' @param x Shorthand notation of a sphingoid base (as string), e.g. "d16:1(4E)(15Me)"
-#' @example 
-#' calc_sphingoid_mass("d16:1(4E)(15Me)")
+#' @param lipid Lipid for which the mass shall be calculated.
+#' @examples 
+#' library(lipidomicsUtils)
+#' calc_sphingoid_formula("d16:1(1OH,3OH,15Me)")
+#' 
+#' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
+#' 
+#' @seealso \code{\link{calc_sphingoid_mass}}
 #'
 #' @export
-calc_sphingoid_formula <- function(x) {
+calc_sphingoid_formula <- function(sphingoid_base) {
   
   # get number of carbons, etc...
-  carbon_number <- get_carbon_number(x)
-  bond_number <- get_bond_number(x)
+  carbon_number <- get_carbon_number(sphingoid_base)
+  bond_number <- get_bond_number(sphingoid_base)
   
   # get modifications
-  peroxy_number <- get_peroxy_number(x)
-  hydroxy_number <- get_hydroxy_number(x)
-  keto_number <- get_keto_number(x)
-  amino_number <- get_amino_number(x)
+  peroxy_number <- get_peroxy_number(sphingoid_base)
+  hydroxy_number <- get_hydroxy_number(sphingoid_base)
+  keto_number <- get_keto_number(sphingoid_base)
+  amino_number <- get_amino_number(sphingoid_base)
   
   # calculate number of atoms (other than C)
   c_count <- carbon_number
