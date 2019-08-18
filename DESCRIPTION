@@ -12,8 +12,11 @@ Imports:
     stringr,
     httr,
     jsonlite,
-    rcdk
+    rcdk,
+    metabolomicsUtils
 Suggests: 
     knitr,
     rmarkdown
+Remotes:
+    michaelwitting/metabolomicsUtils
 VignetteBuilder: knitr
