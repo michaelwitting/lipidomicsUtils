@@ -68,14 +68,14 @@ calc_lipid_mass <- function(lipid) {
     
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
-    lipid_mass <- lipidomicsUtils::glycerol_mass +
+    lipid_mass <- lipidomicsUtils:::glycerol_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "TG") {
     
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
-    lipid_mass <- lipidomicsUtils::glycerol_mass +
+    lipid_mass <- lipidomicsUtils:::glycerol_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PC") {
