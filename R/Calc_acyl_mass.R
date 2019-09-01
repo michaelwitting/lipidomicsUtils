@@ -16,7 +16,7 @@
 #' @export
 calc_intact_acyl_mass <- function(x) {
   
-  if(stringr::str_detect(x, "0:0")) {
+  if(x == "0:0") {
     return(0.0)
   }
   
@@ -57,7 +57,7 @@ calc_intact_acyl_mass <- function(x) {
 #' @export
 calc_residue_acyl_mass <- function(x) {
   
-  if(stringr::str_detect(x, "0:0")) {
+  if(x == "0:0") {
     return(0.0)
   }
 
@@ -100,7 +100,7 @@ calc_residue_acyl_mass <- function(x) {
 #' @export
 calc_intact_acyl_formula <- function(x) {
   
-  if(stringr::str_detect(x, "0:0")) {
+  if(x == "0:0") {
     return("C0")
   }
   
@@ -142,7 +142,7 @@ calc_intact_acyl_formula <- function(x) {
 #' @export
 calc_residue_acyl_formula <- function(x) {
   
-  if(stringr::str_detect(x, "0:0")) {
+  if(x == "0:0") {
     return("C0")
   }
   
