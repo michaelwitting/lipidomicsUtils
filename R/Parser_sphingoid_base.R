@@ -30,10 +30,11 @@ isolate_sphingoid_base <- function(lipid) {
 #' 
 #' This functions isolates all sphingoid bases from a given lipid shorthand notation and returns them as vector. upported modifications are currently hydroxy groups (OH), hydroperoxy groups (OOH), keto groups (O) and amino groups (NH2)
 #' 
-#' @param lipid Shorthand notation of a acyl (as string), e.g. "Cer(d16:1(4E,1OH,3OH,15Me)/22:0)"
+#' @param lipid Vector or list of shorthand notations, e.g. c("Cer(d16:1(4E,1OH,3OH,15Me)/22:0)", "HexCer(d18:1/22:0)")
 #' @examples
-#' library(lipidomicsUtils) 
-#' isolate_fatty_acyls("Cer(d16:1(4E,1OH,3OH,15Me)/22:0)")
+#' library(lipidomicsUtils)
+#' lipids <- c("Cer(d16:1(4E,1OH,3OH,15Me)/22:0)", "HexCer(d18:1/22:0)")
+#' isolate_sphingoids(lipids)
 #' 
 #' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
