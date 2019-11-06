@@ -14,16 +14,19 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Basic lipid parsing
-
-Lipids are made of defined building blocks. This building blocks are represented in shorthand notations.
-These shorthands notations can be parsed to get the individual build blocks
+# Installation of <code>lipidomicsUtils</code>
+The <code>lipidomicsUtils</code> package enables to parse lipid shorthand notations and additionally offers several calculation functions. The package can be installed directly from GitHub using functions from <code>devtools</code>.
 
 ```{r setup}
 # loading required libraries
+# use only if package shall be installed
+#library(devtools)
+#install_github("michaelwitting/lipidomicsUtils", ref = "master")
+
 library(lipidomicsUtils)
 ```
 
+# Lipid categories
 
 ```{r categories}
 # example lipid PC(16:0/18:1(9Z)), LMGP01010005
@@ -31,7 +34,7 @@ lipid <- "PC(16:0/18:1(9Z)"
 
 # get different lipid categories
 get_lipid_category(lipid)
-get_lipid_class(lipid)
+get_lipid_mainclass(lipid)
 get_lipid_subclass(lipid)
 ```
 
@@ -42,10 +45,9 @@ lipid <- "PC(O-18:0/18:1(9Z)"
 
 # get different lipid categories
 get_lipid_category(lipid)
-get_lipid_class(lipid)
+get_lipid_mainclass(lipid)
 get_lipid_subclass(lipid)
 ```
-
 
 ```{r categories3}
 # example lipid Cer(d18:1/18:1(9Z)), LMSP02010003
@@ -53,6 +55,27 @@ lipid <- "Cer(d18:1/18:1(9Z))"
 
 # get different lipid categories
 get_lipid_category(lipid)
-get_lipid_class(lipid)
+get_lipid_mainclass(lipid)
 get_lipid_subclass(lipid)
 ```
+
+```{r categories3}
+# example lipid Cer(d18:1/18:1(9Z)), LMSP02010003
+lipid <- "Cer(d18:1(4E,1OH,3OH)/18:1(9Z))"
+
+# get different lipid categories
+get_lipid_category(lipid)
+get_lipid_mainclass(lipid)
+get_lipid_subclass(lipid)
+```
+
+
+```{r radyl groups}
+# example lipid Cer(d18:1/18:1(9Z)), LMSP02010003
+lipid <- "Cer(d18:1(4E,1OH,3OH)/18:1(9Z))"
+
+isolate_radyls(lipid)
+isolate_sphingoid_base(lipid)
+get_hydroxy_groups(lipid)
+```
+
