@@ -80,7 +80,7 @@ get_fa_biggid <- function(x) {
   
   # create BiGG ID
   bigg_id <- paste0(stringr::str_to_lower(lipid_main_class),
-                    carbon_number, "_",
+                    carbon_number - length(methyl_branches), "_",
                     bond_number, "_")
   
   # add different functional groups

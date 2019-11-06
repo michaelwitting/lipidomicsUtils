@@ -66,3 +66,48 @@ test_that("correct number of carbons and doubles bonds are isolated", {
   expect_equal(get_bond_number("18:3(6Z,9Z,12Z)"), 3)
   
 })
+
+## tests for correct fatty acyls (new radyl function) --------------------------
+test_that("correct fatty acyls are isolated", {
+  
+  # glycerolipids (single lipid)
+  expect_equal(isolate_radyls("MG(16:0/0:0/0:0)"), list(c("16:0", "0:0", "0:0")))
+  expect_equal(isolate_radyls("DG(16:0/18:1(9Z)/0:0)"), list(c("16:0", "18:1(9Z)", "0:0")))
+  expect_equal(isolate_radyls("TG(16:0/18:1(9Z)/18:0)"), list(c("16:0", "18:1(9Z)", "18:0")))
+  
+  # glycerolipids (multiple lipids)
+  expect_equal(isolate_radyls(c("MG(16:0/0:0/0:0)",
+                                "DG(16:0/18:1(9Z)/0:0)",
+                                "TG(16:0/18:1(9Z)/18:0)")), list(c("16:0", "0:0", "0:0"),
+                                                                 c("16:0", "18:1(9Z)", "0:0"),
+                                                                 c("16:0", "18:1(9Z)", "18:0")))
+  
+  # glycerphospholipids (single lipid)
+  expect_equal(isolate_radyls("PC(16:0/18:1(9Z))"), list(c("16:0", "18:1(9Z)")))
+  expect_equal(isolate_radyls("PC(16:0/18:3(6Z,9Z,12Z))"), list(c("16:0", "18:3(6Z,9Z,12Z)")))
+  expect_equal(isolate_radyls("PC(O-16:0/18:1(9Z))"), list(c("O-16:0", "18:1(9Z)")))
+  expect_equal(isolate_radyls("PC(P-16:0/18:1(9Z))"), list(c("P-16:0", "18:1(9Z)")))
+  expect_equal(isolate_radyls("PC(P-16:0/16:0(15Me))"), list(c("P-16:0", "16:0(15Me)")))
+  
+  # glycerphospholipids (multiple lipids)
+  expect_equal(isolate_radyls(c("PC(16:0/18:1(9Z))",
+                                "PC(16:0/18:3(6Z,9Z,12Z))",
+                                "PC(O-16:0/18:1(9Z))",
+                                "PC(P-16:0/18:1(9Z))",
+                                "PC(P-16:0/16:0(15Me))")), list(c("16:0", "18:1(9Z)"),
+                                                                c("16:0", "18:3(6Z,9Z,12Z)"),
+                                                                c("O-16:0", "18:1(9Z)"),
+                                                                c("P-16:0", "18:1(9Z)"),
+                                                                c("P-16:0", "16:0(15Me)")))
+  
+  # oxidized lipid(single lipid)
+  expect_equal(isolate_radyls("PC(18:0/20:4(7E,9E,11Z,14Z)(5OH[S],6OH[R])"), list(c("18:0", "20:4(7E,9E,11Z,14Z)(5OH[S],6OH[R])")))
+  
+  # sphingolipids (single lipid)
+  expect_equal(isolate_radyls("Cer(d18:1/20:0)"), list(c("20:0")))
+  expect_equal(isolate_radyls("Cer(d18:1/20:0(2OH))"), list(c("20:0(2OH)")))
+  
+  # coenzyme A (single lipid)
+  expect_equal(isolate_radyls("CoA(16:1(2E))"), list(c("16:1(2E)")))
+  
+})

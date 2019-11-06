@@ -317,14 +317,28 @@ get_hydroxy_groups <- function(x) {
 #' @export
 get_keto_groups <- function(x) {
   
-  # get all keto groups in lipids
+  # get all "keto" groups in lipids
   keto_groups <- unlist(stringr::str_extract_all(x, "\\d+O")[[1]])
+  
+  # get all hydroxy groups for filterin
   hydroxy_groups <- unlist(stringr::str_extract_all(x, "\\d+(OH)(\\[(S|R)\\])*")[[1]])
   hydroxy_groups <- unlist(stringr::str_remove_all(hydroxy_groups, "\\[(S|R)\\]"))
   hydroxy_groups <- unlist(stringr::str_remove_all(hydroxy_groups, "H"))
   
+  # filter keto groups to be not present in hydroxyl groups
   keto_groups <- keto_groups[!keto_groups %in% hydroxy_groups]
+  
+  # get all peroxygroups
+  peroxy_groups <- unlist(stringr::str_extract_all(x, "\\d+(OOH)(\\[(S|R)\\])*")[[1]])
+  peroxy_groups <- unlist(stringr::str_remove_all(peroxy_groups, "\\[(S|R)\\]"))
+  peroxy_groups <- unlist(stringr::str_remove_all(peroxy_groups, "OH"))
+  
+  keto_groups <- keto_groups[!keto_groups %in% peroxy_groups]
 
+  if(length(keto_groups) == 0) {
+    keto_groups <- NA
+  }
+  
   return(keto_groups)
 }
 

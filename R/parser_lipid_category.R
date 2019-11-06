@@ -40,6 +40,8 @@ get_lipid_category <- function(lipid) {
     stop("Unknown lipid")
     
   }
+  
+  return(lipid_category)
 }
 
 #' @title Determine the lipid main class

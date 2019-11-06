@@ -31,18 +31,18 @@ test_that("correct shorthand notation for FAs", {
 })
 
 
-## test for correct generation of BiGG IDs
-test_that("correct generation of BiGG IDs", {
-  
-  # saturated acyls
-  expect_equal(get_fa_biggid("FA(16:0)"), "fa16_0")
-  expect_equal(get_fa_biggid("CoA(16:0)"), "coa16_0")
-  
-  # monounsaturated acyls
-  expect_equal(get_fa_biggid("FA(18:1(9Z))"), "fa18_1_9z")
-  
-  # funtionalized
-  expect_equal(get_fa_biggid("CoA(18:1(9Z,3O))"), "coa18_1_9z3o")
-  expect_equal(get_fa_biggid("CoA(18:1(9Z,3OH[S]))"), "coa18_1_9z3oh__S")
-  
-})
+# ## test for correct generation of BiGG IDs
+# test_that("correct generation of BiGG IDs", {
+#   
+#   # saturated acyls
+#   expect_equal(get_fa_biggid("FA(16:0)"), "fa16_0")
+#   expect_equal(get_fa_biggid("CoA(16:0)"), "coa16_0")
+#   
+#   # monounsaturated acyls
+#   expect_equal(get_fa_biggid("FA(18:1(9Z))"), "fa18_1_9z")
+#   
+#   # funtionalized
+#   expect_equal(get_fa_biggid("CoA(18:1(9Z,3O))"), "coa18_1_9z3o")
+#   expect_equal(get_fa_biggid("CoA(18:1(9Z,3OH[S]))"), "coa18_1_9z3oh__S")
+#   
+# })

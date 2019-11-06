@@ -16,6 +16,15 @@ h2so4_mass <- rcdk::get.formula("H2SO4")@mass
 hexose_mass <- rcdk::get.formula("C6H12O6")@mass
 dihexose_mass <- rcdk::get.formula("C12H22O11")@mass
 
+## general formulae ------------------------------------------------------------
+# general base formula
+coa_formula <- "C21H36N7O16P3S"
+water_formula <- "H2O"
+h3po4_formula <- "H3PO4"
+h2so4_formula <- "H2SO4"
+hexose_formula <- "C6H12O6"
+dihexose_formula <- "C12H22O11"
+
 ## ion masses ------------------------------------------------------------------
 proton_mass <- rcdk::get.formula("H", charge = 1)@mass
 sodium_ion_mass <- rcdk::get.formula("Na", charge = 1)@mass
