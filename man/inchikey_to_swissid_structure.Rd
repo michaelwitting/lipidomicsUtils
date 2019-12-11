@@ -20,7 +20,7 @@ This function uses the SwissLipids API to search for a SwissLipids ID from a giv
 library(lipidomicsUtils)
 inchikey_to_swissid_structure("WTJKGGKOPKCXLL-VYOBOKEXSA-N")
 
- @author Michael Witting, \\email{michael.witting@helmholtz-muenchen.de}
+ @author Michael Witting, \email{michael.witting@helmholtz-muenchen.de}
 
 }
 \seealso{

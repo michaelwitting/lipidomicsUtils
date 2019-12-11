@@ -7,7 +7,7 @@ Description: This package supplies different utility functions for people workin
 Depends: R (>= 3.1.0)
 License: GPL-3
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Imports:
     stringr,
     httr,
