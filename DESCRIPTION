@@ -1,22 +1,23 @@
 Package: lipidomicsUtils
 Title: Utility functions for lipidomics
-Version: 0.1
+Version: 0.5
 Authors@R: person("Michael", "Witting",email = "michael.witting@helmholtz-muenchen.de",
                   role = c("aut", "cre"))
 Description: This package supplies different utility functions for people working in lipidomics, e.g. parsing of lipid shorthand notations.
-Depends: R (>= 3.1.0)
+Depends: R (>= 4.0.0)
 License: GPL-3
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Imports:
     stringr,
     httr,
     jsonlite,
     rcdk,
-    metabolomicsUtils
+    MetaboCoreUtils
 Suggests: 
     knitr,
     rmarkdown
 Remotes:
     michaelwitting/metabolomicsUtils
-VignetteBuilder: knitr
+VignetteBuilder:
+    knitr

@@ -18,7 +18,7 @@ This functions isolates all fatty acyls, alkyls and alkenyls from a given lipid 
 }
 \examples{
 library(lipidomicsUtils) 
-lipids <- c(PC(18:0/20:4(7E,9E,11Z,14Z)), "PC(16:0/18:1(9Z))")
+lipids <- c("PC(18:0/20:4(7E,9E,11Z,14Z))", "PC(16:0/18:1(9Z))")
 isolate_radyls(lipids)
 
 }

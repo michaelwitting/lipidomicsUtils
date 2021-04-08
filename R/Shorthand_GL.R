@@ -13,6 +13,8 @@
 #' @export
 get_gl_shorthand <- function(x, level = c("structural", "molecular", "species")) {
   
+  level <- match.arg(level)
+  
   # detection of functional groups
   if(stringr::str_detect(x, "\\d+(OH|OOH|O|NH2)")) {
     stop("Functional groups other than methyl branches on fatty acyls currently not supported, only DBs")

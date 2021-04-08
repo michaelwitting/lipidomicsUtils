@@ -6,12 +6,14 @@
 #' @param level Either \code{structural}, \code{molecular} or \code{species} for the respective levels according to SwissLipids hierachy
 #' @examples 
 #' library(lipidomicsUtils)
-#' get_gl_shorthand("Cer(d16:1(4E,1OH,3OH,15Me)/22:0)")
+#' get_sph_shorthand("Cer(d16:1(4E,1OH,3OH,15Me)/22:0)")
 #' 
 #' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
 #' @export
 get_sph_shorthand <- function(x, level = c("structural", "molecular", "species")) {
+  
+  level <- match.arg(level)
   
   # detection of functional groups
   # if(stringr::str_detect(x, "\\d+(OOH|O|NH2)")) {

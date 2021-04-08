@@ -9,7 +9,8 @@ test_that("correct isolation of functional groups", {
   
   # get double bond number
   expect_equal(get_bond_number("18:2(9Z,12Z)"), 2)
-
+  expect_equal(get_bond_number("19:0(9-11cy3:1(9))"), 1)
+  
   # functionalized fatty acid
   expect_equal(get_hydroxy_number("16:0(2OH)"), 1)
   expect_equal(get_peroxy_number("16:0(2OOH)"), 1)

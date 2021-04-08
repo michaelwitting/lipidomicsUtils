@@ -4,6 +4,21 @@ context("Generation of Shorthand")
 ## test for correct shorthand notation of GP
 test_that("correct shorthand notation for GPs", {
   
+  # glycerolipids (PAs)
+  expect_equal(get_gp_shorthand("PA(16:0/16:0(15Me))", level = "structural"), "PA(16:0/17:0)")
+  expect_equal(get_gp_shorthand("PA(16:0/16:0(15Me))", level = "molecular"), "PA(16:0_17:0)")
+  expect_equal(get_gp_shorthand("PA(16:0/16:0(15Me))", level = "species"), "PA(33:0)")
+  
+  # glycerolipids (PA-Os)
+  expect_equal(get_gp_shorthand("PA(O-16:0/16:0(15Me))", level = "structural"), "PA(O-16:0/17:0)")
+  expect_equal(get_gp_shorthand("PA(O-16:0/16:0(15Me))", level = "molecular"), "PA(O-16:0_17:0)")
+  expect_equal(get_gp_shorthand("PA(O-16:0/16:0(15Me))", level = "species"), "PA(O-33:0)")
+  
+  # glycerolipids (PC-Ps)
+  expect_equal(get_gp_shorthand("PA(P-16:0/16:0(15Me))", level = "structural"), "PA(P-16:0/17:0)")
+  expect_equal(get_gp_shorthand("PA(P-16:0/16:0(15Me))", level = "molecular"), "PA(P-16:0_17:0)")
+  expect_equal(get_gp_shorthand("PA(P-16:0/16:0(15Me))", level = "species"), "PA(O-33:1)")
+  
   # glycerolipids (PCs)
   expect_equal(get_gp_shorthand("PC(16:0/16:0(15Me))", level = "structural"), "PC(16:0/17:0)")
   expect_equal(get_gp_shorthand("PC(16:0/16:0(15Me))", level = "molecular"), "PC(16:0_17:0)")

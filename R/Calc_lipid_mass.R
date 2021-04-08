@@ -29,41 +29,41 @@ calc_lipid_mass <- function(lipid) {
     
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
-    lipid_mass <- lipidomicsUtils::coa_mass + 
+    lipid_mass <- lipidomicsUtils:::coa_mass + 
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "NAE") {
     
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
-    lipid_mass <- lipidomicsUtils::ethanolamine_mass + 
+    lipid_mass <- lipidomicsUtils:::ethanolamine_mass + 
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PNAE") {
     
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
-    lipid_mass <- lipidomicsUtils::ethanolamine_mass + 
-      lipidomicsUtils::h3po4_mass -
-      lipidomicsUtils::water_mass +
+    lipid_mass <- lipidomicsUtils:::ethanolamine_mass + 
+      lipidomicsUtils:::h3po4_mass -
+      lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "GPNAE") {
     
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
-    lipid_mass <- lipidomicsUtils::ethanolamine_mass + 
-      lipidomicsUtils::h3po4_mass -
-      lipidomicsUtils::water_mass +
-      lipidomicsUtils::glycerol_mass -
-      lipidomicsUtils::water_mass +
+    lipid_mass <- lipidomicsUtils:::ethanolamine_mass + 
+      lipidomicsUtils:::h3po4_mass -
+      lipidomicsUtils:::water_mass +
+      lipidomicsUtils:::glycerol_mass -
+      lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "MG") {
     
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
-    lipid_mass <- lipidomicsUtils::glycerol_mass +
+    lipid_mass <- lipidomicsUtils:::glycerol_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "DG") {
@@ -122,8 +122,8 @@ calc_lipid_mass <- function(lipid) {
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
     lipid_mass <- lipidomicsUtils:::gpi_mass +
-      lipidomicsUtils::h3po4_mass -
-      lipidomicsUtils::water_mass +
+      lipidomicsUtils:::h3po4_mass -
+      lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PIP2") {
@@ -131,8 +131,8 @@ calc_lipid_mass <- function(lipid) {
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
     lipid_mass <- lipidomicsUtils:::gpi_mass +
-      2 * lipidomicsUtils::h3po4_mass -
-      2 * lipidomicsUtils::water_mass +
+      2 * lipidomicsUtils:::h3po4_mass -
+      2 * lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PIP3") {
@@ -140,8 +140,8 @@ calc_lipid_mass <- function(lipid) {
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
     lipid_mass <- lipidomicsUtils:::gpi_mass +
-      3 * lipidomicsUtils::h3po4_mass -
-      3 * lipidomicsUtils::water_mass +
+      3 * lipidomicsUtils:::h3po4_mass -
+      3 * lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PA") {
@@ -156,8 +156,8 @@ calc_lipid_mass <- function(lipid) {
     fatty_acyls <- lipidomicsUtils::isolate_fatty_acyls(lipid)
     
     lipid_mass <- lipidomicsUtils:::pg_mass +
-      lipidomicsUtils::h3po4_mass -
-      lipidomicsUtils::water_mass +
+      lipidomicsUtils:::h3po4_mass -
+      lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "CL") {
@@ -298,12 +298,13 @@ calc_lipid_mass <- function(lipid) {
 #' @export
 calc_lipid_masses <- function(lipids) {
   
-  lipid_masses <- lapply(lipids, FUN = .calc_lipid_mass_helper)
-  
-  return(lipid_masses)
+  sapply(lipids, FUN = .calc_lipid_mass_helper)
   
 }
 
+#'
+#'
+#' @noRd
 .calc_lipid_mass_helper <- function(lipid) {
   
   # get main class
@@ -312,89 +313,89 @@ calc_lipid_masses <- function(lipids) {
   # check class and calculate lipid mass
   if(lipid_mainclass == "FA") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- sum(unlist(lapply(fatty_acyls, calc_intact_acyl_mass)))
     
   } else if(lipid_mainclass == "CoA") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
-    lipid_mass <- lipidomicsUtils::coa_mass + 
+    lipid_mass <- lipidomicsUtils:::coa_mass + 
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "NAE") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
-    lipid_mass <- lipidomicsUtils::ethanolamine_mass + 
+    lipid_mass <- lipidomicsUtils:::ethanolamine_mass + 
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PNAE") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
-    lipid_mass <- lipidomicsUtils::ethanolamine_mass + 
-      lipidomicsUtils::h3po4_mass -
-      lipidomicsUtils::water_mass +
+    lipid_mass <- lipidomicsUtils:::ethanolamine_mass + 
+      lipidomicsUtils:::h3po4_mass -
+      lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "GPNAE") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
-    lipid_mass <- lipidomicsUtils::ethanolamine_mass + 
-      lipidomicsUtils::h3po4_mass -
-      lipidomicsUtils::water_mass +
-      lipidomicsUtils::glycerol_mass -
-      lipidomicsUtils::water_mass +
+    lipid_mass <- lipidomicsUtils:::ethanolamine_mass + 
+      lipidomicsUtils:::h3po4_mass -
+      lipidomicsUtils:::water_mass +
+      lipidomicsUtils:::glycerol_mass -
+      lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "MG") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
-    lipid_mass <- lipidomicsUtils::glycerol_mass +
+    lipid_mass <- lipidomicsUtils:::glycerol_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "DG") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::glycerol_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "TG") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::glycerol_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PC") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::gpc_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PE") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::gpe_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PS") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::gps_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PG") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::gpg_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
@@ -403,57 +404,57 @@ calc_lipid_masses <- function(lipids) {
     
   } else if(lipid_mainclass == "PI") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::gpi_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PIP") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::gpi_mass +
-      lipidomicsUtils::h3po4_mass -
-      lipidomicsUtils::water_mass +
+      lipidomicsUtils:::h3po4_mass -
+      lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PIP2") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::gpi_mass +
-      2 * lipidomicsUtils::h3po4_mass -
-      2 * lipidomicsUtils::water_mass +
+      2 * lipidomicsUtils:::h3po4_mass -
+      2 * lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PIP3") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::gpi_mass +
-      3 * lipidomicsUtils::h3po4_mass -
-      3 * lipidomicsUtils::water_mass +
+      3 * lipidomicsUtils:::h3po4_mass -
+      3 * lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PA") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::pg_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "PPA") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::pg_mass +
-      lipidomicsUtils::h3po4_mass -
-      lipidomicsUtils::water_mass +
+      lipidomicsUtils:::h3po4_mass -
+      lipidomicsUtils:::water_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "CL") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::cl_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
@@ -462,28 +463,29 @@ calc_lipid_masses <- function(lipids) {
     
   } else if(lipid_mainclass == "NAPE") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::gpe_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "SPH") {
     
-    sphingoid_base <- lipidomicsUtils::isolate_sphingoid_base(lipid)
+    sphingoid_base <- unlist(lipidomicsUtils::isolate_sphingoid_base(lipid))
     
     lipid_mass <- lipidomicsUtils::calc_sphingoid_mass(sphingoid_base)
     
   } else if(lipid_mainclass == "Cer") {
     
-    sphingoid_base <- lipidomicsUtils::isolate_sphingoid_base(lipid)
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    sphingoid_base <- unlist(lipidomicsUtils::isolate_sphingoid_base(lipid))
+    
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils::calc_sphingoid_mass(sphingoid_base) +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))
     
   } else if(lipid_mainclass == "S1P") {
     
-    sphingoid_base <- lipidomicsUtils::isolate_sphingoid_base(lipid)
+    sphingoid_base <- unlist(lipidomicsUtils::isolate_sphingoid_base(lipid))
     
     lipid_mass <- lipidomicsUtils::calc_sphingoid_mass(sphingoid_base) +
       lipidomicsUtils:::h3po4_mass -
@@ -491,8 +493,9 @@ calc_lipid_masses <- function(lipids) {
     
   } else if(lipid_mainclass == "CerP") {
     
-    sphingoid_base <- lipidomicsUtils::isolate_sphingoid_base(lipid)
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    sphingoid_base <- unlist(lipidomicsUtils::isolate_sphingoid_base(lipid))
+    
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils::calc_sphingoid_mass(sphingoid_base) +
       lipidomicsUtils:::h3po4_mass -
@@ -501,8 +504,9 @@ calc_lipid_masses <- function(lipids) {
     
   } else if(lipid_mainclass == "SM") {
     
-    sphingoid_base <- lipidomicsUtils::isolate_sphingoid_base(lipid)
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    sphingoid_base <- unlist(lipidomicsUtils::isolate_sphingoid_base(lipid))
+    
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils::calc_sphingoid_mass(sphingoid_base) +
       lipidomicsUtils:::pc_mass -
@@ -511,8 +515,9 @@ calc_lipid_masses <- function(lipids) {
     
   } else if(lipid_mainclass == "GlcCer") {
     
-    sphingoid_base <- lipidomicsUtils::isolate_sphingoid_base(lipid)
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    sphingoid_base <- unlist(lipidomicsUtils::isolate_sphingoid_base(lipid))
+    
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils::calc_sphingoid_mass(sphingoid_base) +
       lipidomicsUtils:::hexose_mass -
@@ -521,8 +526,9 @@ calc_lipid_masses <- function(lipids) {
     
   } else if(lipid_mainclass == "GalCer") {
     
-    sphingoid_base <- lipidomicsUtils::isolate_sphingoid_base(lipid)
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    sphingoid_base <- unlist(lipidomicsUtils::isolate_sphingoid_base(lipid))
+    
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils::calc_sphingoid_mass(sphingoid_base) +
       lipidomicsUtils:::hexose_mass -
@@ -532,8 +538,9 @@ calc_lipid_masses <- function(lipids) {
     
   } else if(lipid_mainclass == "LacCer") {
     
-    sphingoid_base <- lipidomicsUtils::isolate_sphingoid_base(lipid)
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    sphingoid_base <- unlist(lipidomicsUtils::isolate_sphingoid_base(lipid))
+    
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils::calc_sphingoid_mass(sphingoid_base) +
       lipidomicsUtils:::dihexose_mass -
@@ -543,8 +550,9 @@ calc_lipid_masses <- function(lipids) {
     
   } else if(lipid_mainclass == "HexCer") {
     
-    sphingoid_base <- lipidomicsUtils::isolate_sphingoid_base(lipid)
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    sphingoid_base <- unlist(lipidomicsUtils::isolate_sphingoid_base(lipid))
+    
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils::calc_sphingoid_mass(sphingoid_base) +
       lipidomicsUtils:::hexose_mass -
@@ -553,8 +561,9 @@ calc_lipid_masses <- function(lipids) {
     
   } else if(lipid_mainclass == "Hex2Cer") {
     
-    sphingoid_base <- lipidomicsUtils::isolate_sphingoid_base(lipid)
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    sphingoid_base <- unlist(lipidomicsUtils::isolate_sphingoid_base(lipid))
+    
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils::calc_sphingoid_mass(sphingoid_base) +
       lipidomicsUtils:::dihexose_mass -
@@ -563,7 +572,7 @@ calc_lipid_masses <- function(lipids) {
     
   } else if(lipid_mainclass == "Mar") {
     
-    fatty_acyls <- lipidomicsUtils::isolate_radyls(lipid)
+    fatty_acyls <- unlist(lipidomicsUtils::isolate_radyls(lipid))
     
     lipid_mass <- lipidomicsUtils:::dihexose_mass +
       sum(unlist(lapply(fatty_acyls, calc_residue_acyl_mass)))

@@ -18,7 +18,7 @@ This function calculates the formula of an acyl, alkyl or alkenyl given as short
 }
 \examples{
 library(lipidomicsUtils)
-calc_intact_residue_formula("18:1(9Z)")
+calc_residue_acyl_formula("18:1(9Z)")
 
 }
 \seealso{

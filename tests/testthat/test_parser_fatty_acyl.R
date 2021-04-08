@@ -26,6 +26,9 @@ test_that("correct fatty acyls are isolated", {
   # coenzyme A
   expect_equal(isolate_fatty_acyls("CoA(16:1(2E))"), "16:1(2E)")
   
+  # cyclic fatty acids
+  expect_equal(isolate_fatty_acyls("FA(19:0(11-13cy3:0))"), "19:0(11-13cy3:0)")
+  
 })
 
 ## tests for carbon and double bond number -------------------------------------

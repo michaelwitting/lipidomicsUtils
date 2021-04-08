@@ -20,7 +20,7 @@ This function simplifies a given shorthand notation to a lower level notation, e
 }
 \examples{
 library(lipidomicsUtils)
-get_gl_shorthand("Cer(d16:1(4E,1OH,3OH,15Me)/22:0)")
+get_sph_shorthand("Cer(d16:1(4E,1OH,3OH,15Me)/22:0)")
 
 }
 \author{

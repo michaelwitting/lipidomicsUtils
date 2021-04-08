@@ -1,3 +1,8 @@
+#===============================================================================
+#
+# masses
+#
+#===============================================================================
 ## atom masses -----------------------------------------------------------------
 # get atom masses
 c_mass <- rcdk::get.formula("C")@mass
@@ -65,3 +70,76 @@ pipp_mass <- rcdk::get.formula("C6H15O15P3")@mass
 
 # get base masses (CLs)
 cl_mass <- rcdk::get.formula("C9H22O13P2")@mass
+
+#===============================================================================
+#
+# formulae
+#
+#===============================================================================
+## atom masses -----------------------------------------------------------------
+# get atom masses
+c_formula <- "C"
+h_formula <- "H"
+o_formula <- "O"
+n_formula <- "N"
+p_formula <- "P"
+s_formula <- "S"
+
+## general masses --------------------------------------------------------------
+# general base masses
+coa_formula <- "C21H36N7O16P3S"
+water_formula <- "H2O"
+h3po4_formula <- "H3PO4"
+h2so4_formula <- "H2SO4"
+hexose_formula <- "C6H12O6"
+dihexose_formula <- "C12H22O11"
+
+## general formulae ------------------------------------------------------------
+# general base formula
+coa_formula <- "C21H36N7O16P3S"
+water_formula <- "H2O"
+h3po4_formula <- "H3PO4"
+h2so4_formula <- "H2SO4"
+hexose_formula <- "C6H12O6"
+dihexose_formula <- "C12H22O11"
+
+## ion masses ------------------------------------------------------------------
+proton_formula <- "H"
+sodium_ion_formula <- "Na"
+
+## Gylcero- and Glycerophospholipid base masses --------------------------------
+# get base masses (PCs)
+gpc_formula <- "C8H20NO6P"
+pc_formula <- "C5H14NO4P"
+choline_formula <- "C5H13NO"
+
+# get base masses (PEs)
+gpe_formula <- "C5H14NO6P"
+pe_formula <- "C2H8NO4P"
+ethanolamine_formula <- "C2H7NO"
+
+# get base masses (PSs)
+gps_formula <- "C6H14NO8P"
+ps_formula <- "C3H8NO6P"
+serine_formula <- "C3H7NO3"
+
+# get base masses (PGs)
+gpg_formula <- "C6H15O8P"
+pg_formula <- "C3H9O6P"
+glycerol_formula <- "C3H8O3"
+
+# get base masses (PIs)
+gpi_formula <- "C9H19O11P"
+pi_formula <- "C6H13O9P"
+inositol_formula <- "C6H12O6"
+
+# get base masses (PIPs)
+gpip_formula <- "C9H20O14P2"
+pip_formula <- "C6H14O12P2"
+
+# get base masses (PIP2s)
+gpipp_formula <- "C9H21O17P3"
+pipp_formula <- "C6H15O15P3"
+
+# get base masses (CLs)
+cl_formula <- "C9H22O13P2"

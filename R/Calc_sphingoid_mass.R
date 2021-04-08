@@ -62,7 +62,7 @@ calc_sphingoid_formula <- function(sphingoid_base) {
                               "O", o_count,
                               "N", n_count)
   
-  sphingoid_formula <- lipidomicsUtils::standardize_formula(sphingoid_formula)
+  sphingoid_formula <- MetaboCoreUtils::standardizeFormula(sphingoid_formula)
   
   # return sphingoid formula
   return(sphingoid_formula)

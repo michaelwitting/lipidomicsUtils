@@ -131,7 +131,7 @@ calc_intact_acyl_formula <- function(x) {
 #' @param x Shorthand notation of a acyl, alkyl, alkenyl (as string), e.g. "18:1(9Z)"
 #' @examples 
 #' library(lipidomicsUtils)
-#' calc_intact_residue_formula("18:1(9Z)")
+#' calc_residue_acyl_formula("18:1(9Z)")
 #' 
 #' @author Michael Witting, \email{michael.witting@@helmholtz-muenchen.de}
 #'
@@ -161,7 +161,7 @@ calc_residue_acyl_formula <- function(x) {
     
   }
   
-  residue_formula <- lipidomicsUtils::formula_subtraction(intact_formula, "H2O")
+  residue_formula <- MetaboCoreUtils::subtractElements(intact_formula, "H2O")
   
   # return formula
   return(residue_formula)
@@ -195,7 +195,7 @@ calc_residue_acyl_formula <- function(x) {
                          "O", o_count,
                          "N", n_count)
     
-  acyl_formula <- lipidomicsUtils::standardize_formula(acyl_formula)
+  acyl_formula <- MetaboCoreUtils::standardizeFormula(acyl_formula)
   
   # return formula
   return(acyl_formula)
@@ -229,7 +229,7 @@ calc_residue_acyl_formula <- function(x) {
                           "O", o_count,
                           "N", n_count)
   
-  alkyl_formula <- lipidomicsUtils::standardize_formula(alkyl_formula)
+  alkyl_formula <- MetaboCoreUtils::standardizeFormula(alkyl_formula)
   
   # return formula
   return(alkyl_formula)
@@ -263,7 +263,7 @@ calc_residue_acyl_formula <- function(x) {
                           "O", o_count,
                           "N", n_count)
   
-  alkenyl_formula <- lipidomicsUtils::standardize_formula(alkenyl_formula)
+  alkenyl_formula <- MetaboCoreUtils::standardizeFormula(alkenyl_formula)
   
   # return formula
   return(alkenyl_formula)

@@ -59,7 +59,7 @@ get_lipid_mainclass(lipid)
 get_lipid_subclass(lipid)
 ```
 
-```{r categories3}
+```{r categories4}
 # example lipid Cer(d18:1/18:1(9Z)), LMSP02010003
 lipid <- "Cer(d18:1(4E,1OH,3OH)/18:1(9Z))"
 
